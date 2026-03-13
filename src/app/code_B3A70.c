@@ -124,7 +124,7 @@ void func_8032C540(Unk80362690* arg0) {
     uvEventPost(0x10, 0);
     func_80313E0C(func_802E6B68());
     sp6C = -100.0f;
-    sp68 = arg0->unk0[0].unk6;
+    sp68 = arg0->unk0[0].terraId;
     sp64 = 0xFFFF;
     func_802E7278(&sp108, &sp66);
     func_8032D33C(&sp108, &sp108, temp_s0->unk70->unk8, 1);
@@ -181,7 +181,7 @@ void func_8032C540(Unk80362690* arg0) {
             uvMat4Copy(&sp148, &birdmanData->unk10);
             break;
         }
-        sp66 = arg0->unk0[0].unk6;
+        sp66 = arg0->unk0[0].terraId;
         if (sp66 != sp64) {
             uvChanTerra(temp_s0->unk70->unk22C, sp66);
             level_80345A24();

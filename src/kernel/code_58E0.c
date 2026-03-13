@@ -451,11 +451,11 @@ void func_80205CE4(UnkStruct_80204D94* arg0, s32 arg1, f32 arg2, f32 arg3) {
 
         switch (var_s1->unk0) {
         case 2:
-            uvmd = gGfxUnkPtrs->models[((Unk80263780*)(var_s1->unk10))->unk0];
+            uvmd = gGfxUnkPtrs->models[((Unk80263780*)(var_s1->unk10))->modelId];
             uvDobj_80217B4C((Unk80263780*)var_s1->unk10, uvmd, var_s1->unk1);
             break;
         case 3:
-            uvDobj_80217E24((Unk80263780*)var_s1->unk10, gGfxUnkPtrs->models[((Unk80263780*)(var_s1->unk10))->unk0], var_s1->unk1, var_s1->unk8, var_s1->unkC);
+            uvDobj_80217E24((Unk80263780*)var_s1->unk10, gGfxUnkPtrs->models[((Unk80263780*)(var_s1->unk10))->modelId], var_s1->unk1, var_s1->unk8, var_s1->unkC);
             break;
         case 1:
             uvGfxStatePush();
@@ -465,7 +465,7 @@ void func_80205CE4(UnkStruct_80204D94* arg0, s32 arg1, f32 arg2, f32 arg3) {
             uvGfxStatePop();
             break;
         case 4:
-            uvmd = gGfxUnkPtrs->models[((UnkSobjDraw*)(var_s1->unk10))->unk0];
+            uvmd = gGfxUnkPtrs->models[((UnkSobjDraw*)(var_s1->unk10))->modelId];
             uvGfx_802236CC(var_s1->unk18);
             if (uvmd->lodTable[var_s1->unk1].billboard != 0) {
                 uvSobj_8022CC28((UnkSobjDraw*)var_s1->unk10, uvmd, var_s1->unk1, var_s1->unk8, var_s1->unkC);

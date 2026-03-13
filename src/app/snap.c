@@ -925,7 +925,7 @@ void func_8033A244(s32 arg0, Unk80373060* arg1) {
         uvGfxBegin();
         func_80204C94(0, arg1->unk18, arg1->unk1C, arg1->unk24, arg1->unk20, arg1->unk28, arg1->unk2C);
         func_80204B34(0, &sp90);
-        uvChanTerra(0, D_80362690->unk0[0].unk6);
+        uvChanTerra(0, D_80362690->unk0[0].terraId);
         func_80204A8C(0, 11);
         func_80204FC4(0);
         uvGfxEnd();

@@ -142,7 +142,7 @@ typedef struct {
 typedef struct {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
+    s32 surfaceId;
     Vec3F unkC;
     f32 unk18;
     Vec3F unk1C;
@@ -264,7 +264,7 @@ typedef struct {
 typedef struct {
     s32 unk0;
     u16 map;
-    u16 unk6;
+    u16 terraId;
     u16 unk8;
     u8 debugFlag;
     u8 unkB;
@@ -545,7 +545,7 @@ void level_803449B0(void);
 s32 levelIsValidIndex(s32 classIdx, s32 testIdx, s32 vehicle);
 s32 level_80344E0C(s32 classIdx, s32 testIdx, s32 vehicle, char* arg3, char* arg4);
 s32 levelGetTestCount(s32 classIdx, s32 vehicle);
-s32 level_80344FC8(s32 classIdx, s32 vehicle, s32 testIdx, u16* map, u16* arg4, u16* arg5);
+s32 level_80344FC8(s32 classIdx, s32 vehicle, s32 testIdx, u16* map, u16* terraId, u16* arg5);
 void level_803453AC(void);
 s32 level_80345464(Mtx4F*, f32);
 s32 level_803456D8(Mtx4F*);
