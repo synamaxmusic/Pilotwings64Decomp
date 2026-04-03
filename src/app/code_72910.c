@@ -44,7 +44,7 @@ void func_802EB424(Mtx4F* arg0, s32 arg1) {
     splashUpdate();
     func_803147B8(arg0, arg1);
     if (temp_s0[1] == 1) {
-        snow_update();
+        snowUpdate();
     }
     temp_s0_2 = &D_80362690->unkC[D_80362690->unk9C];
     sp44 = func_8021A304(temp_s0_2->unk2C.m[3][0], temp_s0_2->unk2C.m[3][1], temp_s0_2->unk2C.m[3][2], 1);
@@ -72,7 +72,7 @@ void func_802EB598(void) {
     fx_create();
     smokeCreateTerra();
     if (sp1C[1] == 1) {
-        func_803405C0();
+        snowEnable();
     }
 }
 
@@ -86,7 +86,7 @@ void func_802EB5E4(void) {
     func_80314AE0();
 
     if (sp1C[1] == 1) {
-        func_803405E4();
+        snowDisable();
     }
 }
 
