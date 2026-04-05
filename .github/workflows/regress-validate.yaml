@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [ foo, bar ]
+        version: [ us ]
     steps:
     - name: Checkout
       uses: actions/checkout@v4
