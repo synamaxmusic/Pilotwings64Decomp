@@ -146,7 +146,7 @@ void func_802DA23C(CannonballData* arg0) {
         if (!(arg0->unk2AC & 2)) {
             sndPlaySfx(0x36);
             if ((arg0->unk11C != 0) && !(arg0->unk2AC & 2)) {
-                sndPlaySfx(0x1A);
+                sndPlaySfx(SFX_WATER_SPLASH);
             }
             arg0->unk2AC |= 2;
             func_8033F748(0x12);

@@ -194,7 +194,7 @@ void bmSound_802D1334(BirdmanData* arg0) {
                 if ((arg0->unk15C != 0) && (arg0->unk104 == 2)) {
                     if (!(arg0->unk410 & 0x04)) {
                         arg0->unk410 |= 0x04;
-                        sndPlaySfx(0x1A);
+                        sndPlaySfx(SFX_WATER_SPLASH);
                     }
                 }
                 break;
