@@ -18,7 +18,7 @@ void func_8033F964(u8);
 void func_8033FA88(f32);
 void func_8033FAD4(f32);
 void func_8033FB14(void);
-void sndGetPilot(s32*, f32*);
+void sndGetPilotScream(s32*, f32*);
 void func_8033FCD0(u16);
 void func_8033FA88(f32);
 void func_8033FD94(u16, f32, f32);

@@ -184,7 +184,7 @@ void sndEvent(s32 event, void* data, s32 eventData) {
     func_8033FB14();
 }
 
-void sndGetPilot(s32* soundId, f32* pitch) {
+void sndGetPilotScream(s32* soundId, f32* pitch) {
     Unk80362690_Unk0* temp = &D_80362690->unkC[D_80362690->unk9C];
 
     switch (temp->pilot) {
