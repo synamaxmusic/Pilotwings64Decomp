@@ -141,7 +141,7 @@ enum Sfx {
     /* 0x72 */ SFX_UI_HINT,
     /* 0x73 */ SFX_UI_SCORING,
     /* 0x74 */ SFX_UI_SELECT_MOVE, // 808 cowbell
-    /* 0x75 */ SFX_UNK_117,
+    /* 0x75 */ SFX_UI_CONTROL,
     /* 0x76 */ SFX_UNK_118,        // duplicate of SFX_UI_HINT
     /* 0x77 */ SFX_UNK_119,
     // all IDs below are possibly unused

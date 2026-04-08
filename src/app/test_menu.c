@@ -438,7 +438,7 @@ u8 testMenuHandler(Unk80367710* arg0) {
                     testMenuInit(arg0, 1);
                     break;
                 case 1:
-                    sndPlaySfxVolPitchPan(0x75, 1.0f, 0.8f, 0.0f);
+                    sndPlaySfxVolPitchPan(SFX_UI_CONTROL, 1.0f, 0.8f, 0.0f);
                     testMenu_8034A428();
                     func_802DCB40();
                     testMenuInit(arg0, 2);
