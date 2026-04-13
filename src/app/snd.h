@@ -85,7 +85,7 @@ enum Sfx {
     /* 0x3A */ SFX_UNK_058,
     /* 0x3B */ SFX_UNK_059,
     /* 0x3C */ SFX_UNK_060,
-    /* 0x3D */ SFX_UNK_061,
+    /* 0x3D */ SFX_QUICK_SWISH, // "64" logo fly-in and pilot head shake 
     /* 0x3E */ SFX_UNK_062,
     /* 0x3F */ SFX_UNK_063,
     /* 0x40 */ SFX_UNK_064,
