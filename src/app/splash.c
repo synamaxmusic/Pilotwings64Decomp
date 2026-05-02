@@ -13,8 +13,8 @@ typedef struct {
     f32 size;
     s32 fxIds[10];
     u8 pad6C[4];
-    f64 unk70;
-    f64 unk78;
+    f64 timeInit;
+    f64 timePrev;
     s32 active;
     u8 pad84[4];
 } SplashEffect; // size = 0x88
@@ -146,24 +146,24 @@ void splashAdd(Mtx4F* pos, f32 size) {
             }
         }
     }
-    effect->unk78 = effect->unk70 = uvClkGetSec(4);
+    effect->timePrev = effect->timeInit = uvClkGetSec(UV_CLKID_APP);
     effect->active = TRUE;
 }
 
 void splashUpdate(void) {
-    f64 temp_fs3;
+    f64 timeCurr;
     Mtx4F fxMtx;
     SplashEffect* effect;
     f32 temp_fs0;
     f32 angle;
     f32 var_fs2;
-    f64 var_fa0;
-    f64 tmp;
+    f64 timeElapsed;
+    f64 timeDelta;
     f32 tmpRand;
     s32 i;
     s32 j;
 
-    temp_fs3 = uvClkGetSec(4);
+    timeCurr = uvClkGetSec(UV_CLKID_APP);
     for (i = 0; i < ARRAY_COUNT(sSplashEffects); i++) {
         effect = &sSplashEffects[i];
         if (!effect->active) {
@@ -171,15 +171,15 @@ void splashUpdate(void) {
         }
 
         for (j = 0; j < ARRAY_COUNT(sSplashRippleParams); j++) {
-            var_fa0 = (temp_fs3 - effect->unk70);
-            if (sSplashRippleParams[j].unkC < var_fa0) {
+            timeElapsed = (timeCurr - effect->timeInit);
+            if (sSplashRippleParams[j].unkC < timeElapsed) {
                 continue;
             }
             if (effect->fxIds[j] == 0xFF) {
                 continue;
             }
 
-            temp_fs0 = (f32)(var_fa0 / sSplashRippleParams[j].unkC);
+            temp_fs0 = (f32)(timeElapsed / sSplashRippleParams[j].unkC);
             var_fs2 = (temp_fs0 <= 0.0) ? 0.0f : uvSqrtF(temp_fs0);
             uvFxProps(effect->fxIds[j], 7, 1.0 - SQ(temp_fs0), 0);
             uvMat4SetIdentity(&fxMtx);
@@ -190,9 +190,9 @@ void splashUpdate(void) {
             func_8021A4D8(effect->fxIds[j], &fxMtx);
         }
 
-        if (temp_fs3 - effect->unk70 < 3.5) {
-            tmp = temp_fs3 - effect->unk78;
-            if (tmp > 0.4) {
+        if (timeCurr - effect->timeInit < 3.5) {
+            timeDelta = timeCurr - effect->timePrev;
+            if (timeDelta > 0.4) {
                 uvMat4SetIdentity(&fxMtx);
                 tmpRand = demoRandF() - 0.5f;
                 fxMtx.m[3][0] = effect->unk0.m[3][0] + (tmpRand * effect->size);
@@ -201,7 +201,7 @@ void splashUpdate(void) {
                 fxMtx.m[3][2] = effect->unk0.m[3][2] + 1.0f;
                 tmpRand = ((demoRandF() * 0.7f) + 0.3f) * effect->size;
                 splashAddRipple(&fxMtx, tmpRand);
-                effect->unk78 = temp_fs3;
+                effect->timePrev = timeCurr;
             }
         } else {
             effect->active = FALSE;
