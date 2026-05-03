@@ -161,7 +161,7 @@ STATIC_FUNC void shuttle_80335130(void) {
         D_803504DC = uvSeqFindFree();
         if (D_803504DC != 0xFF) {
             uvSeqModel(D_803504DC, 0);
-            uvSeqProps(D_803504DC, SEQ_PROP_4(60.0f), SEQ_PROP_END);
+            uvSeqProps(D_803504DC, SEQ_PROP_FRAMERATE(60.0f), SEQ_PROP_END);
             D_803504E4 = func_8034B464(6);
             if (D_803504E4 != 0xFF) {
                 // clang-format off
@@ -181,7 +181,7 @@ STATIC_FUNC void shuttle_80335130(void) {
         D_803504D8 = uvSeqFindFree();
         if (D_803504D8 != 0xFF) {
             uvSeqModel(D_803504D8, 0);
-            uvSeqProps(D_803504D8, SEQ_PROP_4(60.0f), SEQ_PROP_END);
+            uvSeqProps(D_803504D8, SEQ_PROP_FRAMERATE(60.0f), SEQ_PROP_END);
             D_803504E0 = func_8034B464(6);
             if (D_803504E0 != 0xFF) {
                 // clang-format off
@@ -267,12 +267,12 @@ STATIC_FUNC void shuttle_80335700(void) {
     }
 
     if (D_803504DC != 0xFF) {
-        uvSeqProps(D_803504DC, SEQ_PROP_1(0), SEQ_PROP_END);
+        uvSeqProps(D_803504DC, SEQ_PROP_ACTIVE(0), SEQ_PROP_END);
         D_803504DC = 0xFF;
     }
 
     if (D_803504D8 != 0xFF) {
-        uvSeqProps(D_803504D8, SEQ_PROP_1(0), SEQ_PROP_END);
+        uvSeqProps(D_803504D8, SEQ_PROP_ACTIVE(0), SEQ_PROP_END);
         D_803504D8 = 0xFF;
     }
 

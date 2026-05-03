@@ -5,106 +5,105 @@
 #include <uv_memory.h>
 #include <libc/stdarg.h>
 
-typedef struct Unk80269F50 {
-    u8 unk0;
-    u8 unk1;
-    f32 unk4;
-    ParsedUVSQ unk8;
-} Unk80269F50;
+typedef struct uvSeqState {
+    u8 active;
+    u8 currFrame;
+    f32 frameTime;
+    ParsedUVSQ uvsq;
+} uvSeqState;
 
-Unk80269F50 D_80269F50[10];
+uvSeqState gSeqStateTable[10];
 
 void uvSeqInit(void) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(D_80269F50); i++) {
-        D_80269F50[i].unk0 = 0;
-        D_80269F50[i].unk1 = 0;
-        D_80269F50[i].unk4 = 0;
-        D_80269F50[i].unk8.count = 0;
-        D_80269F50[i].unk8.unk4 = NULL;
-        D_80269F50[i].unk8.unk8 = 0;
-        D_80269F50[i].unk8.unk9 = 0;
-        D_80269F50[i].unk8.unkC = 1.0f;
+    for (i = 0; i < ARRAY_COUNT(gSeqStateTable); i++) {
+        gSeqStateTable[i].active = FALSE;
+        gSeqStateTable[i].currFrame = 0;
+        gSeqStateTable[i].frameTime = 0;
+        gSeqStateTable[i].uvsq.frameCount = 0;
+        gSeqStateTable[i].uvsq.frameTable = NULL;
+        gSeqStateTable[i].uvsq.mode = UVSQ_MODE_REPEAT;
+        gSeqStateTable[i].uvsq.reverse = FALSE;
+        gSeqStateTable[i].uvsq.framerate = 1.0f;
     }
 }
 
 void uvSeqUpdateAll(void) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(D_80269F50); i++) {
-        if (D_80269F50[i].unk0 != 0) {
+    for (i = 0; i < ARRAY_COUNT(gSeqStateTable); i++) {
+        if (gSeqStateTable[i].active != FALSE) {
             uvSeqUpdate(i);
         }
     }
 }
 
-void uvSeqModel(s32 arg0, s32 seqId) {
-    Unk80269F50* temp_v0;
-    ParsedUVSQ* temp_a3;
+void uvSeqModel(s32 seqId, s32 index) {
+    uvSeqState* seq;
+    ParsedUVSQ* uvsq = gGfxUnkPtrs->sequences[index];
 
-    temp_a3 = gGfxUnkPtrs->sequences[seqId];
-    if (temp_a3 == NULL) {
-        _uvDebugPrintf("uvSeqModel: sequence %d not in level\n", seqId);
+    if (uvsq == NULL) {
+        _uvDebugPrintf("uvSeqModel: sequence %d not in level\n", index);
         return;
     }
-    temp_v0 = &D_80269F50[arg0];
-    temp_v0->unk0 = 1;
-    if (temp_a3->unk9 == 1) {
-        temp_v0->unk1 = temp_a3->count - 1;
+    seq = &gSeqStateTable[seqId];
+    seq->active = TRUE;
+    if (uvsq->reverse == TRUE) {
+        seq->currFrame = uvsq->frameCount - 1;
     } else {
-        temp_v0->unk1 = 0;
+        seq->currFrame = 0;
     }
-    if (temp_a3->count != 0) {
-        temp_v0->unk4 = temp_a3->unk4[temp_v0->unk1].unk4;
+    if (uvsq->frameCount != 0) {
+        seq->frameTime = uvsq->frameTable[seq->currFrame].frameTime;
     }
-    _uvMediaCopy(&temp_v0->unk8, temp_a3, sizeof(ParsedUVSQ));
+    _uvMediaCopy(&seq->uvsq, uvsq, sizeof(ParsedUVSQ));
 }
 
-void uvSeqProps(s32 arg0, ...) {
-    Unk80269F50* temp_s3;
-    s32 temp_v0;
-    s32 temp_a1;
-    ParsedUVSQ* temp_v1;
+void uvSeqProps(s32 seqId, ...) {
+    uvSeqState* seq;
+    s32 currFrame;
+    s32 propId;
+    ParsedUVSQ* uvsq;
     va_list args;
 
-    temp_s3 = &D_80269F50[arg0];
-    temp_v1 = &temp_s3->unk8;
-    if ((temp_s3 == NULL) || (temp_v1 == NULL)) {
-        _uvDebugPrintf("uvSeqProps: invalid object id %d\n", arg0);
+    seq = &gSeqStateTable[seqId];
+    uvsq = &seq->uvsq;
+    if ((seq == NULL) || (uvsq == NULL)) {
+        _uvDebugPrintf("uvSeqProps: invalid object id %d\n", seqId);
         return;
     }
-    va_start(args, arg0);
+    va_start(args, seqId);
     while (TRUE) {
-        temp_a1 = va_arg(args, s32);
-        switch (temp_a1) {
-        case 0:
+        propId = va_arg(args, s32);
+        switch (propId) {
+        case SEQ_PROPID_END:
             return;
-        case 1:
-            temp_s3->unk0 = va_arg(args, s32);
+        case SEQ_PROPID_ACTIVE:
+            seq->active = va_arg(args, s32);
             break;
-        case 3:
-            temp_v0 = va_arg(args, s32);
-            if (temp_v0 >= temp_v1->count) {
+        case SEQ_PROPID_CURR_FRAME:
+            currFrame = va_arg(args, s32);
+            if (currFrame >= uvsq->frameCount) {
                 // FAKE
-                if (temp_v1) { }
+                if (uvsq) { }
                 _uvDebugPrintf("uvSeqProps: CURFRM past bounds\n");
             } else {
-                temp_s3->unk1 = temp_v0;
+                seq->currFrame = currFrame;
             }
             break;
-        case 2:
-            temp_v1->unk8 = va_arg(args, s32);
+        case SEQ_PROPID_MODE:
+            uvsq->mode = va_arg(args, s32);
             break;
-        case 5:
-            temp_v1->unk9 = va_arg(args, s32);
-            temp_s3->unk1 = temp_v1->count - 1;
+        case SEQ_PROPID_REVERSE:
+            uvsq->reverse = va_arg(args, s32);
+            seq->currFrame = uvsq->frameCount - 1;
             break;
-        case 4:
-            temp_v1->unkC = va_arg(args, f64);
+        case SEQ_PROPID_FRAMERATE:
+            uvsq->framerate = va_arg(args, f64);
             break;
         default:
-            _uvDebugPrintf("uvSeqProps: property has unknown type (%d)\n", temp_a1);
+            _uvDebugPrintf("uvSeqProps: property has unknown type (%d)\n", propId);
             break;
         }
     }
@@ -113,8 +112,8 @@ void uvSeqProps(s32 arg0, ...) {
 s32 uvSeqFindFree(void) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(D_80269F50); i++) {
-        if (D_80269F50[i].unk0 == 0) {
+    for (i = 0; i < ARRAY_COUNT(gSeqStateTable); i++) {
+        if (gSeqStateTable[i].active == FALSE) {
             return i;
         }
     }
@@ -122,67 +121,65 @@ s32 uvSeqFindFree(void) {
     return 0xFF;
 }
 
-void uvSeqUpdate(s32 arg0) {
-    Unk80269F50* temp_a0;
-    ParsedUVSQ* temp_a1;
+void uvSeqUpdate(s32 seqId) {
+    uvSeqState* seq;
+    ParsedUVSQ* uvsq;
 
-    temp_a0 = &D_80269F50[arg0];
-    temp_a1 = &temp_a0->unk8;
-    temp_a0->unk4 -= temp_a1->unkC * uvGfxGetFrameTime();
+    seq = &gSeqStateTable[seqId];
+    uvsq = &seq->uvsq;
+    seq->frameTime -= uvsq->framerate * uvGfxGetFrameTime();
 
-    if (temp_a0->unk4 > 0.0f) {
+    if (seq->frameTime > 0.0f) {
         return;
     }
 
-    while (temp_a0->unk4 <= 0.0f) {
-        switch (temp_a1->unk8) {
-        case 0:
-            if (temp_a1->unk9 == 0) {
-                temp_a0->unk1 = (temp_a0->unk1 + 1) % temp_a1->count;
+    while (seq->frameTime <= 0.0f) {
+        switch (uvsq->mode) {
+        case UVSQ_MODE_REPEAT:
+            if (uvsq->reverse == FALSE) {
+                seq->currFrame = (seq->currFrame + 1) % uvsq->frameCount;
             } else {
-                temp_a0->unk1 = ((temp_a0->unk1 + temp_a1->count) - 1) % temp_a1->count;
+                seq->currFrame = ((seq->currFrame + uvsq->frameCount) - 1) % uvsq->frameCount;
             }
             break;
-        case 1:
-            if (temp_a1->unk9 == 0) {
-                temp_a0->unk1++;
-                if (temp_a0->unk1 == temp_a1->count) {
-                    temp_a0->unk0 = 0;
+        case UVSQ_MODE_ONESHOT:
+            if (uvsq->reverse == FALSE) {
+                seq->currFrame++;
+                if (seq->currFrame == uvsq->frameCount) {
+                    seq->active = FALSE;
                     return;
                 }
             } else {
-                if (temp_a0->unk1 == 0) {
-                    temp_a0->unk0 = 0;
+                if (seq->currFrame == 0) {
+                    seq->active = FALSE;
                     return;
                 }
-                temp_a0->unk1--;
+                seq->currFrame--;
             }
 
             break;
-        case 2:
-            if (temp_a1->unk9 == 0) {
-                temp_a0->unk1++;
-                if (temp_a0->unk1 + 1 == temp_a1->count) {
-                    temp_a1->unk9 = 1;
+        case UVSQ_MODE_STROBE:
+            if (uvsq->reverse == FALSE) {
+                seq->currFrame++;
+                if (seq->currFrame + 1 == uvsq->frameCount) {
+                    uvsq->reverse = TRUE;
                 }
             } else {
-                temp_a0->unk1--;
-                if (temp_a0->unk1 == 0) {
-                    temp_a1->unk9 = 0;
+                seq->currFrame--;
+                if (seq->currFrame == 0) {
+                    uvsq->reverse = FALSE;
                 }
             }
             break;
         default:
             break;
         }
-        temp_a0->unk4 += temp_a1->unk4[temp_a0->unk1].unk4;
+        seq->frameTime += uvsq->frameTable[seq->currFrame].frameTime;
     }
 }
 
-u16 uvSeqGetUnkState(s32 arg0) {
-    Unk80269F50* temp_v1;
-
-    temp_v1 = &D_80269F50[arg0];
-    return temp_v1->unk8.unk4[temp_v1->unk1].unk0;
+u16 uvSeqGetTextureId(s32 seqId) {
+    uvSeqState* seq = &gSeqStateTable[seqId];
+    return seq->uvsq.frameTable[seq->currFrame].textureId;
 }
 

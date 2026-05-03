@@ -261,32 +261,23 @@ typedef struct ParsedUVTX {
     f32 unk28;
 } ParsedUVTX; // size = 0x2C
 
-typedef struct ParsedUVSQ_Unk4 {
-    u16 unk0;
-    u8 unk2;
-    f32 unk4;
-} ParsedUVSQ_Unk4; // size = 0x8
+typedef struct uvSeqFrame {
+    u16 textureId;
+    u8 unused;
+    f32 frameTime;
+} uvSeqFrame; // size = 0x8
+
+#define UVSQ_MODE_REPEAT    0
+#define UVSQ_MODE_ONESHOT   1
+#define UVSQ_MODE_STROBE    2
 
 typedef struct ParsedUVSQ {
-    u8 count;
-    ParsedUVSQ_Unk4* unk4;
-    u8 unk8;
-    u8 unk9;
-    f32 unkC;
+    u8 frameCount;
+    uvSeqFrame* frameTable;
+    u8 mode;
+    u8 reverse;
+    f32 framerate;
 } ParsedUVSQ;
-
-typedef struct uvGfxUnkStructSequence_Unk4 {
-    u16 unk0;
-    f32 unk4;
-} uvGfxUnkStructSequence_Unk4; // size = 0x8
-
-typedef struct uvGfxUnkStructSequence {
-    u8 unk0;
-    uvGfxUnkStructSequence_Unk4* unk4;
-    u8 unk8;
-    u8 unk9;
-    f32 unkC;
-} uvGfxUnkStructSequence;
 
 typedef struct {
     Vec4F unk0;

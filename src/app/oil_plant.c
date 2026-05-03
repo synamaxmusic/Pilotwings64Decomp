@@ -70,7 +70,7 @@ void oilPlantLoad(void) {
     pos = sOilPlantPos;
     sOilPlantSeqId = uvSeqFindFree();
     uvSeqModel(sOilPlantSeqId, 0);
-    uvSeqProps(sOilPlantSeqId, SEQ_PROP_4(20.0f), SEQ_PROP_END);
+    uvSeqProps(sOilPlantSeqId, SEQ_PROP_FRAMERATE(20.0f), SEQ_PROP_END);
     sOilPlantFxId = func_8021EFF0(6);
     uvModelGet(sOilPlantFxId, 6);
     // clang-format off
@@ -99,7 +99,7 @@ void oilPlantDeinit(void) {
         hud_8031A8E0(sOilPlantRadarId);
     }
     sOilPlantRadarId = 0xFF;
-    uvSeqProps(sOilPlantSeqId, SEQ_PROP_1(0), SEQ_PROP_END);
+    uvSeqProps(sOilPlantSeqId, SEQ_PROP_ACTIVE(FALSE), SEQ_PROP_END);
     uvModelGet(sOilPlantFxId, 0xFF);
     uvFxProps(sOilPlantFxId, FX_PROP_11(0), FX_PROP_END);
     proxAnimDeleteCallback(sOilPlantProxId);

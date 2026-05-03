@@ -108,7 +108,7 @@ void fireFxDeinit(void) {
 
     if (D_80362624 > 0) {
         for (i = 0; i < ARRAY_COUNT(D_80362500); i++) {
-            uvSeqProps(D_80362500[i], SEQ_PROP_1(0), SEQ_PROP_END);
+            uvSeqProps(D_80362500[i], SEQ_PROP_ACTIVE(FALSE), SEQ_PROP_END);
         }
     }
 
@@ -126,8 +126,8 @@ void fireFxCreate(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
             // clang-format off
             uvSeqProps(
                 D_80362500[i],
-                SEQ_PROP_4(20.0f),
-                SEQ_PROP_3(i * 2),
+                SEQ_PROP_FRAMERATE(20.0f),
+                SEQ_PROP_CURR_FRAME(i * 2),
                 SEQ_PROP_END
             );
             // clang-format on

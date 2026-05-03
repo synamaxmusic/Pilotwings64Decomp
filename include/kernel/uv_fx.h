@@ -132,20 +132,27 @@ void uvFxProps(s32 fxId, ...);
 void uvFxGetProps(s32 fxId, ...);
 
 // FIXME: related to UVSQ, which seems fx/gfx related, not audio related
-#define SEQ_PROP_1(x) 1, (x)
-#define SEQ_PROP_2(x) 2, (x)
-#define SEQ_PROP_3(x) 3, (x)
-#define SEQ_PROP_4(x) 4, (x)
-#define SEQ_PROP_5(x) 5, (x)
-#define SEQ_PROP_END 0
+#define SEQ_PROPID_END          0
+#define SEQ_PROPID_ACTIVE       1 // type:s32
+#define SEQ_PROPID_MODE         2 // type:s32
+#define SEQ_PROPID_CURR_FRAME   3 // type:s32
+#define SEQ_PROPID_FRAMERATE    4 // type:f64
+#define SEQ_PROPID_REVERSE      5 // type:s32
+
+#define SEQ_PROP_END            SEQ_PROPID_END
+#define SEQ_PROP_ACTIVE(x)      SEQ_PROPID_ACTIVE, (x)
+#define SEQ_PROP_MODE(x)        SEQ_PROPID_MODE, (x)
+#define SEQ_PROP_CURR_FRAME(x)  SEQ_PROPID_CURR_FRAME, (x)
+#define SEQ_PROP_FRAMERATE(x)   SEQ_PROPID_FRAMERATE, (x)
+#define SEQ_PROP_REVERSE(x)     SEQ_PROPID_REVERSE, (x)
 
 void uvSeqInit(void);
 void uvSeqUpdateAll(void);
-void uvSeqModel(s32, s32);
-void uvSeqProps(s32, ...);
+void uvSeqModel(s32 seqId, s32 index);
+void uvSeqProps(s32 seqId, ...);
 s32  uvSeqFindFree(void);
-void uvSeqUpdate(s32);
-u16  uvSeqGetUnkState(s32);
+void uvSeqUpdate(s32 seqId);
+u16  uvSeqGetTextureId(s32 seqId);
 
 #endif // PILOTWINGS64_UV_FX_H
 

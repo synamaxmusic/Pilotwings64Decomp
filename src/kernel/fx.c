@@ -1041,7 +1041,7 @@ void func_8021DD30(u16 fxId) {
 
     temp_s0 = &D_8028B400[fxId];
     if (temp_s0->unk2 != 0xFF) {
-        var_a0 = uvSeqGetUnkState(temp_s0->unk2);
+        var_a0 = uvSeqGetTextureId(temp_s0->unk2);
     } else {
         if (temp_s0->textureId != GFX_STATE_TEXTURE_NONE) {
             var_a0 = temp_s0->textureId;

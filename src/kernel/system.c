@@ -7,6 +7,7 @@
 #include <uv_clocks.h>
 #include <uv_controller.h>
 #include <uv_dobj.h>
+#include <uv_fx.h>
 #include <uv_geometry.h>
 #include <uv_graphics.h>
 #include <uv_matrix.h>
