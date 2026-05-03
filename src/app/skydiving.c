@@ -272,7 +272,7 @@ void skydivingEnterLeave(SkyDivingData* sdData) {
     sdData->unk27A = 0;
     sdData->unk294 = 0.5f;
     sdData->unk290 = 0.5f;
-    func_802D45C4(sdData->camera, sdData->unk58);
+    camera_802D45C4(sdData->camera, sdData->unk58);
     padsDeinit();
     level_8030B964();
 }
@@ -401,7 +401,7 @@ void func_8032FEAC(SkyDivingData* sdData, s32 buttons, u8 gameState) {
             sp34.m[3][1] = func_80313AF4(sp34.m[3][1], sdData->camera->unk80.m[3][1], 5.0f);
         }
         uvMat4Copy(&sdData->camera->unk80, &sp34);
-        func_802D5884(sdData->camera, sdData->unk54);
+        camera_802D5884(sdData->camera, sdData->unk54);
     }
     sdData->camera->unk228 = (sdData->camera->unk108.m[3][2] - D_80371970[0].unk10.m[3][2]) - 1.5f;
 }
@@ -925,7 +925,7 @@ void func_80331AE4(SkyDivingData* sdData) {
     sdData->unk160.x = 0.0f;
     sdData->unk160.y = 0.0f;
     sdData->unk160.z = 0.0f;
-    func_802D45C4(sdData->camera, sdData->unk58);
+    camera_802D45C4(sdData->camera, sdData->unk58);
     sdData->unk298 = 1.0f;
     sdData->unk29C = 0.1f;
     sdData->unk27A = 1;
@@ -938,7 +938,7 @@ void skydivingBelow(SkyDivingData* sdData) {
     s32 var_a1;
     s32 i;
 
-    func_802D45C4(sdData->camera, sdData->unk58);
+    camera_802D45C4(sdData->camera, sdData->unk58);
     sdData->unk160.x = 0.0f;
     sdData->unk160.y = 0.0f;
     sdData->unk160.z = 0.0f;

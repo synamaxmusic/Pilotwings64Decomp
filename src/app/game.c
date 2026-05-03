@@ -147,7 +147,7 @@ void gameInit(void) {
         temp_s0->cls = 0xFF;
         temp_s0->test = 0xFF;
         temp_s0->unk8B = 0;
-        func_802D3170(i, &D_80362E88[i]);
+        cameraInit(i, &D_80362E88[i]);
         func_8032B3D0(&D_80364210[i]);
         func_8034B5E0(temp_s0->unk70->unk22C, temp_s0->unk70);
     }
@@ -528,7 +528,7 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
         break;
     }
     hudInit();
-    func_802D4DE8(temp_s0->unk70, 0);
+    camera_802D4DE8(temp_s0->unk70, 0);
     if (arg0->unkA2 == 0) {
         hudText_8031D8E0(TEXT_START, 1.5f, 8.0f);
     }
@@ -1164,7 +1164,7 @@ void func_802EDDEC(Mtx4F* arg0) {
     sp50->y = arg0->m[3][1];
     sp50->z = arg0->m[3][2];
     uvDobjPosm(sp4E, 0, sp54);
-    func_802D4ECC(D_80362690->unkC[D_80362690->unk9C].unk70, arg0);
+    camera_802D4ECC(D_80362690->unkC[D_80362690->unk9C].unk70, arg0);
 }
 
 void func_802EE14C(u16 veh) {

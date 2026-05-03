@@ -772,7 +772,7 @@ void map3dDeinit(Unk80362690* arg0, s32 arg1) {
         func_80204A8C(camera->unk22C, 3);
     }
     hudGetState()->renderFlags = sMapHudFlagsSave;
-    func_802D45C4(camera, -1.0f);
+    camera_802D45C4(camera, -1.0f);
 }
 
 void map3d_803123C4(f32 arg0, f32 arg1) {

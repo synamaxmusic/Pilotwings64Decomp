@@ -7,13 +7,13 @@
 #include "splash.h"
 
 void func_8034B5E0(u8 arg0, Camera* camera) {
-    func_802D3170(arg0, camera);
+    cameraInit(arg0, camera);
     func_80204AB0(camera->unk22C, 1, func_8034B6F8);
 }
 
 void func_8034B624(Camera* camera) {
-    func_802D3444(camera);
-    func_802D50D0(camera);
+    camera_802D3444(camera);
+    camera_802D50D0(camera);
     func_80204B34(camera->unk22C, &camera->unk108);
     func_80204BD4(camera->unk22C, 1, camera->unk20);
     func_80204BD4(camera->unk22C, 0, camera->unk20);

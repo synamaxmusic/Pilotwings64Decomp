@@ -85,7 +85,7 @@ void jumbleHopperEnterLeave(JumbleHopperData* jhData) {
     jhData->camera->unk48 = 0.1f;
     jhData->camera->unk4C = 1.0f;
     jhData->camera->unk50 = 0.0f;
-    func_802D45C4(jhData->camera, jhData->unk48);
+    camera_802D45C4(jhData->camera, jhData->unk48);
 }
 
 void func_802FA290(JumbleHopperData* jhData) {
@@ -169,11 +169,11 @@ void jumbleHopperMovementFrame(JumbleHopperData* jhData, u8 gameState) {
             jhData->camera->unkC0 = jhData->unk140.x;
             jhData->camera->unkC4 = jhData->unk15C.z;
             if ((jhData->unk4C == 5) || (jhData->unk4C == 9) || (jhData->unk4C == 4) || (jhData->unk4C == 6) || (jhData->unk4C == 7) || (jhData->unk4C == 8)) {
-                func_802D5884(jhData->camera, 6);
+                camera_802D5884(jhData->camera, 6);
             } else {
-                func_802D5884(jhData->camera, jhData->unk44);
+                camera_802D5884(jhData->camera, jhData->unk44);
             }
-            func_802D45C4(jhData->camera, jhData->unk48);
+            camera_802D45C4(jhData->camera, jhData->unk48);
         }
         if (gameState != GAME_STATE_RESULTS) {
             hud = hudGetState();

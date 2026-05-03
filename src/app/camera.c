@@ -29,20 +29,20 @@ s32 pad_D_8034E9E8 = 0;
 Unk803599D0 D_803599D0;
 
 // forward declarations
-STATIC_FUNC s32 func_802D408C(Camera* camera);
-STATIC_FUNC void func_802D3658(Camera* camera);
-STATIC_FUNC void func_802D3790(Camera* camera);
-STATIC_FUNC void func_802D3BE8(Camera* camera);
-STATIC_FUNC void func_802D3FA4(Camera* camera);
-STATIC_FUNC void func_802D41D8(Camera* camera);
-STATIC_FUNC void func_802D46A4(Camera* camera, s16 x0, s16 x1, s16 y0, s16 y1);
-STATIC_FUNC void func_802D532C(Camera* camera);
-STATIC_FUNC void func_802D559C(Camera* camera);
-STATIC_FUNC s32 func_802D4CA4(Camera* camera, Mtx4F*);
-STATIC_FUNC void func_802D58EC(Camera* camera, Mtx4F*);
-STATIC_FUNC void func_802D4274(Camera* camera);
+STATIC_FUNC s32 camera_802D408C(Camera* camera);
+STATIC_FUNC void camera_802D3658(Camera* camera);
+STATIC_FUNC void camera_802D3790(Camera* camera);
+STATIC_FUNC void camera_802D3BE8(Camera* camera);
+STATIC_FUNC void camera_802D3FA4(Camera* camera);
+STATIC_FUNC void camera_802D41D8(Camera* camera);
+STATIC_FUNC void cameraSetViewport(Camera* camera, s16 x0, s16 x1, s16 y0, s16 y1);
+STATIC_FUNC void camera_802D532C(Camera* camera);
+STATIC_FUNC void camera_802D559C(Camera* camera);
+STATIC_FUNC s32 camera_802D4CA4(Camera* camera, Mtx4F*);
+STATIC_FUNC void camera_802D58EC(Camera* camera, Mtx4F*);
+STATIC_FUNC void camera_802D4274(Camera* camera);
 
-void func_802D3170(u8 unkIndex, Camera* camera) {
+void cameraInit(u8 unkIndex, Camera* camera) {
     f32 one;
     one = 1.0f;
     func_80204A8C(unkIndex, 3);
@@ -110,8 +110,8 @@ void func_802D3170(u8 unkIndex, Camera* camera) {
     camera->unk1374 = 6.0f;
     camera->unk1378 = 30.0f;
     uvMat4SetIdentity(&camera->unk80);
-    func_802D46A4(camera, camera->viewX0, camera->viewX1, camera->viewY0, camera->viewY1);
-    func_802D45C4(camera, 1);
+    cameraSetViewport(camera, camera->viewX0, camera->viewX1, camera->viewY0, camera->viewY1);
+    camera_802D45C4(camera, 1);
     D_803599D0.count = 6;
     D_803599D0.unk4[0].x = 0.0f;
     D_803599D0.unk4[0].y = 0.0f;
@@ -127,7 +127,7 @@ void func_802D3170(u8 unkIndex, Camera* camera) {
     D_803599D0.unk4[5].y = 14.5f;
 }
 
-void func_802D3444(Camera* camera) {
+void camera_802D3444(Camera* camera) {
     Mtx4F sp28;
 
     camera->unk14 += D_8034F854;
@@ -153,41 +153,41 @@ void func_802D3444(Camera* camera) {
             camera->unk1A8 = func_80313AF4(camera->unk1AC, camera->unk1A8, camera->unk1B8);
         }
 
-        if (func_802D408C(camera) != 0) {
-            func_802D41D8(camera);
+        if (camera_802D408C(camera) != 0) {
+            camera_802D41D8(camera);
             return;
         }
 
         switch (camera->unk1) {
         case 9:
-            func_802D3790(camera);
+            camera_802D3790(camera);
             return;
         case 0:
-            func_802D3BE8(camera);
+            camera_802D3BE8(camera);
             return;
         case 1:
-            func_802D3FA4(camera);
+            camera_802D3FA4(camera);
             return;
         case 3:
-            func_802D4274(camera);
+            camera_802D4274(camera);
             return;
         case 4:
-            func_802D532C(camera);
+            camera_802D532C(camera);
             return;
         case 7:
-            func_802D532C(camera);
+            camera_802D532C(camera);
             return;
         case 6:
-            func_802D3658(camera);
+            camera_802D3658(camera);
             return;
         case 8:
-            func_802D559C(camera);
+            camera_802D559C(camera);
             break;
         }
     }
 }
 
-STATIC_FUNC void func_802D3658(Camera* camera) {
+STATIC_FUNC void camera_802D3658(Camera* camera) {
     Mtx4F sp30;
     f32 temp_fa0;
 
@@ -200,20 +200,20 @@ STATIC_FUNC void func_802D3658(Camera* camera) {
         camera->unk108.m[3][0] += camera->unk108.m[1][0] * temp_fa0;
         camera->unk108.m[3][1] += camera->unk108.m[1][1] * temp_fa0;
         camera->unk108.m[3][2] += camera->unk108.m[1][2] * temp_fa0;
-        (void)func_802D472C(camera, &camera->unk108);
+        (void)camera_802D472C(camera, &camera->unk108);
     }
     if (camera->unk0 & 0x08) {
-        (void)func_802D472C(camera, &camera->unk108);
+        (void)camera_802D472C(camera, &camera->unk108);
     }
     if (camera->unk0 & 0x20) {
-        (void)func_802D4A30(camera, &camera->unk108);
+        (void)camera_802D4A30(camera, &camera->unk108);
     }
     if (camera->unk0 & 0x40) {
-        (void)func_802D4CA4(camera, &camera->unk108);
+        (void)camera_802D4CA4(camera, &camera->unk108);
     }
 }
 
-STATIC_FUNC void func_802D3790(Camera* camera) {
+STATIC_FUNC void camera_802D3790(Camera* camera) {
     Vec3F spBC;
     Vec3F spB0;
     Vec3F spA4;
@@ -265,15 +265,15 @@ STATIC_FUNC void func_802D3790(Camera* camera) {
         camera->unk108.m[3][2] = spA4.z;
         uvMat4RotateAxis(&camera->unk108, camera->unk78 * 0.5f, 'z');
         uvMat4RotateAxis(&camera->unk108, camera->unk7C * 0.5f, 'x');
-        func_802D58EC(camera, &camera->unk108);
+        camera_802D58EC(camera, &camera->unk108);
         if (camera->unk0 & 0x08) {
-            func_802D472C(camera, &camera->unk108);
+            camera_802D472C(camera, &camera->unk108);
         }
         if (camera->unk0 & 0x20) {
-            (void)func_802D4A30(camera, &camera->unk108);
+            (void)camera_802D4A30(camera, &camera->unk108);
         }
         if (camera->unk0 & 0x40) {
-            func_802D4CA4(camera, &camera->unk108);
+            camera_802D4CA4(camera, &camera->unk108);
         }
     } else if (camera->unk137C == 1) {
         func_8034AD6C(camera->unkC0, 0.0f, 0.0f, &camera->unk108);
@@ -301,7 +301,7 @@ STATIC_FUNC void func_802D3790(Camera* camera) {
     camera->unk108.m[2][2] /= temp_fv0;
 }
 
-STATIC_FUNC void func_802D3BE8(Camera* camera) {
+STATIC_FUNC void camera_802D3BE8(Camera* camera) {
     Mtx4F sp60;
     f32 sp5C;
     f32 sp58;
@@ -365,7 +365,7 @@ STATIC_FUNC void func_802D3BE8(Camera* camera) {
     }
 
     uvMat4UnkOp6(&sp60, &camera->unk80, &camera->unkC8);
-    func_802D58EC(camera, &sp60);
+    camera_802D58EC(camera, &sp60);
     if (camera->unk4C > 0.0f) {
         func_803138A0(&camera->unk108, &camera->unkC8, &sp60, camera->unk4C);
     } else {
@@ -373,12 +373,12 @@ STATIC_FUNC void func_802D3BE8(Camera* camera) {
     }
     uvMat4RotateAxis(&camera->unk108, camera->unk78 * 0.5f, 'z');
     uvMat4RotateAxis(&camera->unk108, camera->unk7C * 0.5f, 'x');
-    if (func_802D472C(camera, &camera->unkC8) != 0) {
+    if (camera_802D472C(camera, &camera->unkC8) != 0) {
         uvMat4UnkOp6(&camera->unk108, &camera->unk80, &camera->unkC8);
     }
 }
 
-STATIC_FUNC void func_802D3FA4(Camera* camera) {
+STATIC_FUNC void camera_802D3FA4(Camera* camera) {
     Vec3F sp24;
 
     uvMat4Copy(&camera->unk108, &camera->unk80);
@@ -393,10 +393,10 @@ STATIC_FUNC void func_802D3FA4(Camera* camera) {
     }
     uvMat4RotateAxis(&camera->unk108, camera->unk78, 'z');
     uvMat4RotateAxis(&camera->unk108, camera->unk7C, 'x');
-    (void)func_802D4A30(camera, &camera->unk108);
+    (void)camera_802D4A30(camera, &camera->unk108);
 }
 
-STATIC_FUNC s32 func_802D408C(Camera* camera) {
+STATIC_FUNC s32 camera_802D408C(Camera* camera) {
     f32 argX;
     f32 argY;
     f32 argZ;
@@ -438,7 +438,7 @@ STATIC_FUNC s32 func_802D408C(Camera* camera) {
     return 0;
 }
 
-STATIC_FUNC void func_802D41D8(Camera* camera) {
+STATIC_FUNC void camera_802D41D8(Camera* camera) {
     f32 var_fv0;
 
     uvMat4UnkOp6(&camera->unk108, &camera->unk80, &camera->unk14C);
@@ -448,10 +448,10 @@ STATIC_FUNC void func_802D41D8(Camera* camera) {
     } else if (var_fv0 > 4.0f) {
         var_fv0 = 4.0f;
     }
-    func_802D45C4(camera, var_fv0);
+    camera_802D45C4(camera, var_fv0);
 }
 
-STATIC_FUNC void func_802D4274(Camera* camera) {
+STATIC_FUNC void camera_802D4274(Camera* camera) {
     static f32 D_80359A24;
     Mtx4F sp70; // 70:AF
     f32 sp6C;
@@ -488,7 +488,7 @@ STATIC_FUNC void func_802D4274(Camera* camera) {
         sp70.m[3][1] = camera->unk80.m[3][1] + sp68;
         sp70.m[3][2] = camera->unk80.m[3][2] + sp64;
 
-        if (func_802D472C(camera, &sp70) == 0) {
+        if (camera_802D472C(camera, &sp70) == 0) {
             break;
         }
         if (var_fs0 == 1.5706216f) { // almost DEG_TO_RAD(90)
@@ -505,10 +505,10 @@ STATIC_FUNC void func_802D4274(Camera* camera) {
         camera->unk198 = var_fs0;
     }
     uvMat4UnkOp6(&camera->unk108, &camera->unk80, &sp70);
-    func_802D4A30(camera, &camera->unk108);
+    camera_802D4A30(camera, &camera->unk108);
 }
 
-void func_802D4514(Camera* camera) {
+void camera_802D4514(Camera* camera) {
     f32 var_fv0;
     f32 temp;
     f32 temp3;
@@ -540,7 +540,7 @@ void func_802D4514(Camera* camera) {
     camera->unk111C.unk4[1].unk0 = 1;
 }
 
-void func_802D45C4(Camera* camera, f32 arg1) {
+void camera_802D45C4(Camera* camera, f32 arg1) {
     f32 temp_fv0_2;
     f32 x0, x1, y1, near, far, y0;
 
@@ -559,12 +559,12 @@ void func_802D45C4(Camera* camera, f32 arg1) {
         near = camera->clipNear;
         far = camera->clipFar;
         func_80204C94(camera->unk22C, x0, x1, y0, y1, near, far);
-        func_802D4514(camera);
+        camera_802D4514(camera);
         D_8034E9E0 = near;
     }
 }
 
-STATIC_FUNC void func_802D46A4(Camera* camera, s16 x0, s16 x1, s16 y0, s16 y1) {
+STATIC_FUNC void cameraSetViewport(Camera* camera, s16 x0, s16 x1, s16 y0, s16 y1) {
     camera->viewX0 = x0;
     camera->viewX1 = x1;
     camera->viewY0 = y0;
@@ -573,7 +573,7 @@ STATIC_FUNC void func_802D46A4(Camera* camera, s16 x0, s16 x1, s16 y0, s16 y1) {
     func_80204D94(camera->unk22C, camera->viewX0, camera->viewX1, camera->viewY0, camera->viewY1);
 }
 
-s32 func_802D472C(Camera* camera, Mtx4F* arg1) {
+s32 camera_802D472C(Camera* camera, Mtx4F* arg1) {
     f32 temp_fv0;
     f32 temp_fv1;
     Vec3F sp1B4;
@@ -650,7 +650,7 @@ s32 func_802D472C(Camera* camera, Mtx4F* arg1) {
     return 1;
 }
 
-s32 func_802D4A30(Camera* camera, Mtx4F* arg1) {
+s32 camera_802D4A30(Camera* camera, Mtx4F* arg1) {
     s32 sp2A4;
     s32 pad;
     Unk802D3658_Unk1120* temp_s2;
@@ -697,7 +697,7 @@ s32 func_802D4A30(Camera* camera, Mtx4F* arg1) {
     return 1;
 }
 
-STATIC_FUNC s32 func_802D4CA4(Camera* camera, Mtx4F* arg1) {
+STATIC_FUNC s32 camera_802D4CA4(Camera* camera, Mtx4F* arg1) {
     Mtx4F sp30;
     f32 temp_fa1;
     f32 temp_fv0;
@@ -717,11 +717,11 @@ STATIC_FUNC s32 func_802D4CA4(Camera* camera, Mtx4F* arg1) {
     sp30.m[3][1] = camera->unk80.m[3][1] + (camera->unk80.m[1][1] * (4.0f * camera->unk8));
     sp30.m[3][2] = camera->unk80.m[3][2] + (camera->unk80.m[1][2] * (4.0f * camera->unk8));
     uvMat4UnkOp6(arg1, &camera->unk80, &sp30);
-    (void)func_802D472C(camera, arg1);
+    (void)camera_802D472C(camera, arg1);
     return 1;
 }
 
-void func_802D4DE8(Camera* camera, u8 arg1) {
+void camera_802D4DE8(Camera* camera, u8 arg1) {
     Mtx4F sp20;
     if (!arg1) {
         camera->unk148 = 0;
@@ -747,7 +747,7 @@ void func_802D4DE8(Camera* camera, u8 arg1) {
     }
 }
 
-void func_802D4ECC(Camera* camera, Mtx4F* arg1) {
+void camera_802D4ECC(Camera* camera, Mtx4F* arg1) {
     f32 z;
     f32 x;
     f32 y;
@@ -772,7 +772,7 @@ void func_802D4ECC(Camera* camera, Mtx4F* arg1) {
     uvMat4Copy(&camera->unk80, arg1);
 }
 
-void func_802D50D0(Camera* camera) {
+void camera_802D50D0(Camera* camera) {
     f32 near;
     f32 var_ft4;
     f32 temp_fa1;
@@ -832,7 +832,7 @@ void func_802D50D0(Camera* camera) {
     }
 }
 
-// func_802D532C does not initialize sp30, sp34, sp38
+// camera_802D532C does not initialize sp30, sp34, sp38
 #if defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsometimes-uninitialized"
@@ -840,7 +840,7 @@ void func_802D50D0(Camera* camera) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #endif
-STATIC_FUNC void func_802D532C(Camera* camera) {
+STATIC_FUNC void camera_802D532C(Camera* camera) {
     Mtx4F sp80; // 80:BF
     Mtx4F sp40; // 40:7F
     f32 var_fa0;
@@ -867,13 +867,13 @@ STATIC_FUNC void func_802D532C(Camera* camera) {
     uvMat4RotateAxis(&sp80, -camera->unk1B0, 'x');
     uvMat4LocalTranslate(&sp80, 0.0f, -camera->unk1B4, 0.0f);
     if (camera->unk0 & 0x08) {
-        sp38 = func_802D472C(camera, &sp80);
+        sp38 = camera_802D472C(camera, &sp80);
     }
     if (camera->unk0 & 0x20) {
-        sp34 = func_802D4A30(camera, &sp80);
+        sp34 = camera_802D4A30(camera, &sp80);
     }
     if ((camera->unk0 & 0x40) && (sp34 != -1)) {
-        sp30 = func_802D4CA4(camera, &sp80);
+        sp30 = camera_802D4CA4(camera, &sp80);
     }
     if (sp34 == -1) {
         camera->unk1FC = D_8034F850;
@@ -895,13 +895,13 @@ STATIC_FUNC void func_802D532C(Camera* camera) {
     }
     uvMat4RotateAxis(&camera->unk108, camera->unk78 * 0.5f, 'z');
     uvMat4RotateAxis(&camera->unk108, camera->unk7C * 0.5f, 'x');
-    func_802D58EC(camera, &camera->unk108);
+    camera_802D58EC(camera, &camera->unk108);
 }
 #if defined(__GNUC__) || defined(__clang__)
 #pragma GCC diagnostic pop
 #endif
 
-STATIC_FUNC void func_802D559C(Camera* camera) {
+STATIC_FUNC void camera_802D559C(Camera* camera) {
     Mtx4F sp48; // 48:87
     f32 temp_fa0;
     f32 temp_fa0_2;
@@ -951,9 +951,9 @@ STATIC_FUNC void func_802D559C(Camera* camera) {
     } else if (temp_fa0_2 > 4.0f) {
         temp_fa0_2 = 4.0f;
     }
-    func_802D45C4(camera, temp_fa0_2);
+    camera_802D45C4(camera, temp_fa0_2);
     uvMat4UnkOp6(&camera->unk108, &camera->unk80, &sp48);
-    temp_v0 = func_802D472C(camera, &sp48);
+    temp_v0 = camera_802D472C(camera, &sp48);
     if (temp_v0 != 0) {
         camera->unk210.z += 2.0f;
         sp48.m[3][2] += 2.0f;
@@ -961,7 +961,7 @@ STATIC_FUNC void func_802D559C(Camera* camera) {
     }
 }
 
-void func_802D5884(Camera* camera, u8 arg1) {
+void camera_802D5884(Camera* camera, u8 arg1) {
     if (arg1 != camera->unk1) {
         camera->unk2 = camera->unk1;
         camera->unk1 = arg1;
@@ -973,7 +973,7 @@ void func_802D5884(Camera* camera, u8 arg1) {
     }
 }
 
-STATIC_FUNC void func_802D58EC(Camera* camera, Mtx4F* arg1) {
+STATIC_FUNC void camera_802D58EC(Camera* camera, Mtx4F* arg1) {
     Mtx4F sp88; // 88:C7
     Mtx4F sp48; // 48:87
     Vec3F sp3C;

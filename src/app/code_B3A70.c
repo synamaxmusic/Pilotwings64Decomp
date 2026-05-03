@@ -120,7 +120,7 @@ void func_8032C540(Unk80362690* arg0) {
     uvDobjState(sp87, 2);
     uvMat4Copy(&sp148, &temp_s0->unk2C);
     func_8032D33C(&sp188, &sp148, temp_s0->unk70->unk8, 0);
-    func_802D5884(temp_s0->unk70, 5U);
+    camera_802D5884(temp_s0->unk70, 5U);
     temp_s0->unk70->unk1A0 = 2.0f;
     temp_s0->unk70->unk0 = 0x70;
     fdr_802E68B0(3);
@@ -199,7 +199,7 @@ void func_8032C540(Unk80362690* arg0) {
         uvMat4Copy(&temp_s0->unk70->unk80, &sp148);
         if ((var_fs0 - sp6C) < 3.0f) {
             uvMat4Copy(&spC8, &sp88);
-        } else if (func_802D472C(temp_s0->unk70, &spC8) & 0xFF) {
+        } else if (camera_802D472C(temp_s0->unk70, &spC8) & 0xFF) {
             sp6C = var_fs0;
             uvMat4Copy(&sp88, &spC8);
         }
@@ -211,9 +211,9 @@ void func_8032C540(Unk80362690* arg0) {
         } else if (temp_fa0 > 4.0f) {
             temp_fa0 = 4.0f;
         }
-        func_802D45C4(temp_s0->unk70, temp_fa0);
-        func_802D4A30(temp_s0->unk70, &temp_s0->unk70->unk108);
-        func_802D3444(temp_s0->unk70);
+        camera_802D45C4(temp_s0->unk70, temp_fa0);
+        camera_802D4A30(temp_s0->unk70, &temp_s0->unk70->unk108);
+        camera_802D3444(temp_s0->unk70);
         taskFrameUpdate(&sp148, 0.0f);
         proxAnimUpdate();
         uvFontSet(0);

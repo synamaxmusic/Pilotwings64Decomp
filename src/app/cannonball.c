@@ -139,7 +139,7 @@ void cannonLevelEnterLeave(CannonballData* cbData) {
     cbData->camera->unk50 = 0.0f;
     cbData->camera->unk228 = 0.0f;
     uvModelGetProps(cbData->modelId, MODEL_PROP_UNK1(&cbData->camera->unk8), MODEL_PROP_END);
-    func_802D45C4(cbData->camera, cbData->unkB8);
+    camera_802D45C4(cbData->camera, cbData->unkB8);
     D_8034E9F0 = 4.712389f; // DEG_TO_RAD(270)
     D_8034E9F4 = 0;
     D_8034E9F8 = 0;
@@ -310,8 +310,8 @@ void cannonMovementFrame(CannonballData* cbData, u8 gameState) {
         cbData->camera->unk204.z = cbData->unk1C4.z;
         cbData->camera->unk228 = cbData->unk120;
         uvMat4Copy(&cbData->camera->unk80, sp2C);
-        func_802D5884(cbData->camera, cbData->unkB4);
-        func_802D45C4(cbData->camera, cbData->unkB8);
+        camera_802D5884(cbData->camera, cbData->unkB4);
+        camera_802D45C4(cbData->camera, cbData->unkB8);
     }
     if (gameState != GAME_STATE_RESULTS) {
         hud = hudGetState();
@@ -507,7 +507,7 @@ void cannonPilotLand(CannonballData* cbData) {
         D_8034E9FC = 0;
     }
     cbData->unkB4 = 5;
-    func_802D5884(cbData->camera, cbData->unkB4);
+    camera_802D5884(cbData->camera, cbData->unkB4);
 
     spB8 = D_8034E9FC * 0.5f;
     if (spB8 < 0.0f) {
@@ -522,10 +522,10 @@ void cannonPilotLand(CannonballData* cbData) {
     sp34.m[3][1] = (spB8 * D_80359AC0.y) + (temp_fv0_2 * D_80359AB0.y);
     sp34.m[3][2] = (spB8 * D_80359AC0.z) + (temp_fv0_2 * D_80359AB0.z);
     uvMat4UnkOp6(&sp74, &cbData->unk14, &sp34);
-    if (func_802D472C(cbData->camera, &sp34) != 0) {
+    if (camera_802D472C(cbData->camera, &sp34) != 0) {
         uvMat4UnkOp6(&sp74, &cbData->unk14, &sp34);
     }
-    func_802D4A30(cbData->camera, &sp74);
+    camera_802D4A30(cbData->camera, &sp74);
     uvMat4Copy(&cbData->camera->unk108, &sp74);
     hudGetState()->renderFlags = 0;
     func_802D9220(cbData);
@@ -748,7 +748,7 @@ s32 cannonLoad802D77D8(Unk80362690* arg0, CannonballData* cbData) {
     uvMat4Copy(&sp3C, &cbData->unk14);
     uvMat4RotateAxis(&sp3C, 1.5707961f, 'x');
     func_802EDD9C(temp_s1, &sp3C);
-    func_802D4DE8(temp_s1->unk70, 0);
+    camera_802D4DE8(temp_s1->unk70, 0);
     func_8032B508(temp_s1->unk74);
     func_80313E0C(0.0f);
     fdrSetBlen(1.0f);
@@ -957,7 +957,7 @@ s32 cannonEndShot(CannonballData* cbData) {
         func_8034B5E0(temp_s1->unk70->unk22C, temp_s1->unk70);
     }
     cannonLevelEnterLeave(cbData);
-    func_802D4DE8(cbData->camera, 0);
+    camera_802D4DE8(cbData->camera, 0);
     func_80313E0C(0.0f);
     switch (cbData->unkE) {
     case 0:

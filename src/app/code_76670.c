@@ -123,7 +123,7 @@ void hangGliderEnterLeave(HangGliderData* hgData) {
     hgData->camera->unk58 = 18.0f;
     hgData->camera->unk228 = 0.0f;
     uvModelGetProps(hgData->modelId, MODEL_PROP_UNK1(&hgData->camera->unk8), MODEL_PROP_END);
-    func_802D45C4(hgData->camera, hgData->unk58);
+    camera_802D45C4(hgData->camera, hgData->unk58);
 }
 
 void hangGliderMovementFrame(HangGliderData* hgData, u8 gameState) {
@@ -341,13 +341,13 @@ void hangGliderMovementFrame(HangGliderData* hgData, u8 gameState) {
         }
         if (gameState != GAME_STATE_RESULTS) {
             if ((hgData->unk8C == 2) || (hgData->unk8C == 3)) {
-                func_802D5884(hgData->camera, 6);
+                camera_802D5884(hgData->camera, 6);
             } else {
-                func_802D5884(hgData->camera, hgData->unk54);
+                camera_802D5884(hgData->camera, hgData->unk54);
             }
-            func_802D45C4(hgData->camera, hgData->unk58);
+            camera_802D45C4(hgData->camera, hgData->unk58);
         } else {
-            func_802D5884(hgData->camera, 5);
+            camera_802D5884(hgData->camera, 5);
         }
         if (gameState != GAME_STATE_RESULTS) {
             sp5A = 0;
@@ -441,8 +441,8 @@ void hangGliderMovementFrame(HangGliderData* hgData, u8 gameState) {
 void func_802F03C4(HangGliderData* hgData) {
     hgData->camera->unk1 = 0xFF;
     hgData->camera->unk20 = -1.0f;
-    func_802D5884(hgData->camera, hgData->unk54);
-    func_802D45C4(hgData->camera, hgData->unk58);
+    camera_802D5884(hgData->camera, hgData->unk54);
+    camera_802D45C4(hgData->camera, hgData->unk58);
 }
 
 void func_802F041C(HangGliderData* hgData) {
@@ -510,7 +510,7 @@ void func_802F041C(HangGliderData* hgData) {
     } else {
         hgData->camera->unk190 = 6.0f;
     }
-    func_802D5884(hgData->camera, 3);
+    camera_802D5884(hgData->camera, 3);
     hudGetState()->renderFlags = 0;
     shadow_803343D8(0);
     func_802EEF0C(hgData);

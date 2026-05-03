@@ -107,7 +107,7 @@ void birdEnterLeave(BirdmanData* bmData) {
     bmData->camera->unk50 = 0.0f;
     bmData->camera->unk228 = 0.0f;
     D_803593E4 = 0;
-    func_802D45C4(bmData->camera, bmData->unkDC);
+    camera_802D45C4(bmData->camera, bmData->unkDC);
 }
 
 // called when exiting a birdman level
@@ -315,8 +315,8 @@ void birdMovementFrame(BirdmanData* bmData, u8 gameState) {
                 bmData->unk290 = 0;
                 bird_802CE0A4(bmData);
             }
-            func_802D5884(bmData->camera, bmData->unkD8);
-            func_802D45C4(bmData->camera, bmData->unkDC);
+            camera_802D5884(bmData->camera, bmData->unkD8);
+            camera_802D45C4(bmData->camera, bmData->unkDC);
         }
         if (gameState != GAME_STATE_RESULTS) {
             bmData->camera->unk4 = bmData->objId;
@@ -327,13 +327,13 @@ void birdMovementFrame(BirdmanData* bmData, u8 gameState) {
             uvMat4LocalToWorld(&bmData->unk90, &bmData->camera->unk68, &bmData->unk294);
             uvMat4Copy(&bmData->camera->unk80, &bmData->unk10);
             if (bmData->unk104 == 1) {
-                func_802D5884(bmData->camera, 6);
+                camera_802D5884(bmData->camera, 6);
                 bmData->unk2 = 2;
                 uvDobjState(bmData->objId, bmData->unk2);
             } else {
-                func_802D5884(bmData->camera, bmData->unkD8);
+                camera_802D5884(bmData->camera, bmData->unkD8);
             }
-            func_802D45C4(bmData->camera, bmData->unkDC);
+            camera_802D45C4(bmData->camera, bmData->unkDC);
         }
         if ((bmData->unkD8 == 1) && (bmData->unk104 != 1) && (gameState != GAME_STATE_RESULTS)) {
             bmData->unk290 = 0;
@@ -421,7 +421,7 @@ void bird_802CD0F8(BirdmanData* bmData) {
         bird_802CE0A4(bmData);
         shadow_803343D8(0);
     }
-    func_802D5884(bmData->camera, 3);
+    camera_802D5884(bmData->camera, 3);
     hudGetState()->renderFlags = 0;
     if (bmData->unk15C != 0) {
         bmData->camera->unk190 = 12.0f;

@@ -86,7 +86,7 @@ void func_80321760(void) {
     camera = D_80362690->unkC[D_80362690->unk9C].unk70;
     camera->clipNear = 1.0f;
     func_80204C94(camera->unk22C, camera->clipX0, camera->clipX1, camera->clipY0, camera->clipY1, 1.0f, camera->clipFar);
-    func_802D4514(camera);
+    camera_802D4514(camera);
     uvMat4SetIdentity(&sp31C);
     sp3D4 = &D_80362690->unkC[D_80362690->unk9C];
     uvLevelInit();

@@ -169,7 +169,7 @@ void gyrocopterEnterLeave(GyrocopterData* gcData) {
     gcData->camera->unk58 = 7.9f;
     gcData->camera->unk228 = 0.0f;
     uvModelGetProps(gcData->modelId, MODEL_PROP_UNK1(&gcData->camera->unk8), MODEL_PROP_END);
-    func_802D45C4(gcData->camera, gcData->unk68);
+    camera_802D45C4(gcData->camera, gcData->unk68);
 }
 
 void func_802F5F80(GyrocopterData* gcData) {
@@ -419,13 +419,13 @@ void gyrocopterMovementFrame(GyrocopterData* gcData, u8 gameState) {
         }
         if (gameState != GAME_STATE_RESULTS) {
             if ((gcData->unkC0 == 2) || (gcData->unkC0 == 3)) {
-                func_802D5884(gcData->camera, 6);
+                camera_802D5884(gcData->camera, 6);
             } else {
-                func_802D5884(gcData->camera, gcData->unk5C);
+                camera_802D5884(gcData->camera, gcData->unk5C);
             }
-            func_802D45C4(gcData->camera, gcData->unk68);
+            camera_802D45C4(gcData->camera, gcData->unk68);
         } else {
-            func_802D5884(gcData->camera, 5);
+            camera_802D5884(gcData->camera, 5);
         }
         if (D_80362690->unkC[D_80362690->unk9C].unk7B != 0) {
             gcData->fuel = 1.0f;
@@ -725,7 +725,7 @@ void func_802F764C(GyrocopterData* gcData) {
     s32 sp4C;
     u8 sp4B;
 
-    func_802D5884(gcData->camera, 3);
+    camera_802D5884(gcData->camera, 3);
     hudGetState()->renderFlags = 0;
     if (gcData->unkD0 != 0) {
         gcData->camera->unk6 = 0;

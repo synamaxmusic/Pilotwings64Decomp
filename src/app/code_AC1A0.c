@@ -132,7 +132,7 @@ void rocketBeltEnterLeave(RocketBeltData* rbData) {
     rbData->camera->unk74 = 0.0f;
     rbData->camera->unk1B4 = 6.0f;
     uvModelGetProps(rbData->modelId, MODEL_PROP_UNK1(&rbData->camera->unk8), MODEL_PROP_END);
-    func_802D45C4(rbData->camera, rbData->unk60);
+    camera_802D45C4(rbData->camera, rbData->unk60);
 }
 
 void func_80325100(RocketBeltData* rbData) {
@@ -226,16 +226,16 @@ void rocketBeltMovementFrame(RocketBeltData* rbData, u8 gameState) {
             if (gameState != GAME_STATE_RESULTS) {
                 sndPlaySfxVolPitchPan(0x67, 0.3f, 0.65f, 0.0f);
             }
-            func_802D5884(rbData->camera, rbData->unk5C);
-            func_802D45C4(rbData->camera, rbData->unk60);
+            camera_802D5884(rbData->camera, rbData->unk5C);
+            camera_802D45C4(rbData->camera, rbData->unk60);
         }
         if (gameState != GAME_STATE_RESULTS) {
             if ((rbData->unk90 == 2) || (rbData->unk90 == 3)) {
-                func_802D5884(rbData->camera, 6);
+                camera_802D5884(rbData->camera, 6);
             } else {
-                func_802D5884(rbData->camera, rbData->unk5C);
+                camera_802D5884(rbData->camera, rbData->unk5C);
             }
-            func_802D45C4(rbData->camera, rbData->unk60);
+            camera_802D45C4(rbData->camera, rbData->unk60);
         }
         if (rbData->unkEF == 0) {
             if (buttons & 2) {
@@ -437,7 +437,7 @@ void func_80325E1C(RocketBeltData* rbData) {
     s32 sp34;
     u8 sp33;
 
-    func_802D5884(rbData->camera, 3);
+    camera_802D5884(rbData->camera, 3);
     hudGetState()->renderFlags = 0;
 
     if (rbData->unk2 & 4) {
