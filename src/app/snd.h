@@ -159,7 +159,7 @@ enum Music {
     /* 0x09 */ MUS_009,
     /* 0x0A */ MUS_010,
     /* 0x0B */ MUS_011,
-    /* 0x0C */ MUS_012,
+    /* 0x0C */ MUS_GYROCOPTER,
     /* 0x0D */ MUS_013,
     /* 0x0E */ MUS_014,
     /* 0x0F */ MUS_015,

@@ -485,7 +485,7 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
         gyrocopterEnterLeave(D_803676F4);
         func_802EDD9C(temp_s0, &D_803676F4->unk10);
         if ((arg0->state != GAME_STATE_DEMO_PILOT) && (arg0->unkA2 == 0)) {
-            sndSetMusic(0xC);
+            sndSetMusic(MUS_GYROCOPTER);
         }
         break;
     case VEHICLE_ROCKET_BELT:
@@ -1233,7 +1233,7 @@ void func_802EE14C(u16 veh) {
         D_803676F4 = (GyrocopterData*)temp_s0->vehicleData;
         gyrocopterLoadLevel(D_80362690->unk9C, temp_s0->pilot, D_803676F4, temp_s0->unk70);
         gyrocopterEnterLeave(D_803676F4);
-        sndSetMusic(0xC);
+        sndSetMusic(MUS_GYROCOPTER);
         break;
     case VEHICLE_ROCKET_BELT:
         D_803676F8 = (RocketBeltData*)temp_s0->vehicleData;
