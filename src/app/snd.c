@@ -110,8 +110,8 @@ void func_8033F904(u8 emitterId, f32 pitch, f32 vol, f32 pan) {
 
 // 0 = stop current track, play gCurrentMusicId
 // 1 = stop music
-// 2 = demo/replay volume transition?
-// 3 = fade out / play gCurrentMusicId?
+// 2 = pause menu enter
+// 3 = pause menu exit
 void sndSetMusicState(u8 state) {
     switch (state) {
     case 0:

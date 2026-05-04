@@ -949,6 +949,7 @@ s32 gameUpdateStateTestUpdate(Unk80362690* arg0) {
     func_8034B624(sp6C->unk70);
     uvGfxEnd();
     func_80313D74();
+    // pause menu
     if ((demoButtonPress(arg0->unk9C, START_BUTTON) != 0) && (demoButtonCheck(arg0->unk9C, A_BUTTON) == 0)) {
         if ((sp6C->unkA != 3) && (sp6C->unkA != 4)) {
             sp40 = (GyrocopterData*)sp6C->vehicleData;
@@ -994,6 +995,7 @@ s32 gameUpdateStateTestUpdate(Unk80362690* arg0) {
                 }
                 break;
             }
+            // exit pause menu
             sndSetMusicState(3);
             D_8034F850 = sp5C;
             uvEventPost(0x13, 0);
