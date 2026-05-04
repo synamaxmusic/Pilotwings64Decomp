@@ -448,8 +448,7 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
     }
     if (arg0->unkA2 == 0) {
         envSoundInit();
-        // stop music
-        sndSetMusicState(1);
+        sndSetMusicState(MUS_STATE_STOP_SEQ);
     }
     hud_8031A2CC();
     hudText_8031D8E0(-1, 0.0f, 0.0f);
@@ -719,8 +718,7 @@ void func_802ECE94(Unk80362690* arg0) {
         windObjDeinit();
         level_8030BA60();
         if (arg0->unkA2 == 0) {
-            // stop music
-            sndSetMusicState(1);
+            sndSetMusicState(MUS_STATE_STOP_SEQ);
         }
         hud_8031DAA8(0, 0.0f);
         hudGetState()->renderFlags = 0;
@@ -1265,7 +1263,7 @@ void func_802EE14C(u16 veh) {
         uvLevelAppend(0x1B);
         break;
     }
-    sndSetMusicState(1);
+    sndSetMusicState(MUS_STATE_STOP_SEQ);
     func_8032D51C(1);
     sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(temp_s0->veh);

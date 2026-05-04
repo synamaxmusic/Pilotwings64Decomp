@@ -274,8 +274,7 @@ void credits_8030CDA0(s32 timeOfDay) {
 
 void credits_8030D1D4(void) {
     uvEventPost(0xD, 0);
-    // stop music
-    sndSetMusicState(1);
+    sndSetMusicState(MUS_STATE_STOP_SEQ);
     fireFxDeinit();
 }
 

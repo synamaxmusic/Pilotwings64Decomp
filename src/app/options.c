@@ -185,8 +185,7 @@ s32 optionsHandlerMain(void) {
             return -1;
         case 3:
             func_8033FB14();
-            // stop music
-            sndSetMusicState(1);
+            sndSetMusicState(MUS_STATE_STOP_SEQ);
             func_8032D51C(0);
             creditsMainRender();
             options_80316B80();
@@ -274,8 +273,7 @@ s32 optionsHandlerSound(void) {
             return -1;
         } else {
             D_8034F8F4 = 0;
-            // stop music
-            sndSetMusicState(1);
+            sndSetMusicState(MUS_STATE_STOP_SEQ);
         }
     }
     optInc = 0;

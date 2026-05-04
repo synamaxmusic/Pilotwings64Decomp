@@ -363,8 +363,7 @@ s32 func_8032232C(void) {
     uvSprtProps(3, SPRT_PROP_ENABLED(FALSE), SPRT_PROP_END);
     taskDeinitLevel();
     func_8031FE18(D_8036DA20);
-    // stop music
-    sndSetMusicState(1);
+    sndSetMusicState(MUS_STATE_STOP_SEQ);
 
     if (D_80362690->unkA8 < credits_8030CC48()) {
         creditsMainRender();

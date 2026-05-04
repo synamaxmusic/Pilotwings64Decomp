@@ -720,8 +720,7 @@ s32 cannonLoad802D77D8(Unk80362690* arg0, CannonballData* cbData) {
         }
     }
     envSoundInit();
-    // stop music
-    sndSetMusicState(1);
+    sndSetMusicState(MUS_STATE_STOP_SEQ);
     hud_8031DAA8(0, 0.0f);
     temp_s1->test = 0;
     proxAnimDispatchInit();
@@ -866,8 +865,7 @@ s32 cannonLandedFrame(CannonballData* cbData) {
             hudText_8031D8E0(TEXT_C_POINTS, 2.0f, 8.0f);
             if (points == 25) {
                 hudWarningText(TEXT_C_PERFECT, 2.0f, 8.0f);
-                // stop music
-                sndSetMusicState(1);
+                sndSetMusicState(MUS_STATE_STOP_SEQ);
                 sndPlaySfx(SFX_GOAL_GONG);
             } else {
                 sndPlaySfx(0x36);
