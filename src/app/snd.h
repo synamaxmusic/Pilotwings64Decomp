@@ -166,10 +166,10 @@ enum Music {
     /* 0x10 */ MUS_CANNONBALL,
     /* 0x11 */ MUS_CANNONBALL_HIT,
     /* 0x12 */ MUS_CANNONBALL_MISS,
-    /* 0x13 */ MUS_019,
-    /* 0x14 */ MUS_020,
-    /* 0x15 */ MUS_021,
-    /* 0x16 */ MUS_022,     // Same as 0x0B
+    /* 0x13 */ MUS_SKYDIVING,
+    /* 0x14 */ MUS_SKYDIVING_LAND_OK,
+    /* 0x15 */ MUS_SKYDIVING_LAND_MISS,
+    /* 0x16 */ MUS_SKYDIVING_CRASH, // Same as 0x0B
     /* 0x17 */ MUS_023,
     /* 0x18 */ MUS_024,
     /* 0x19 */ MUS_BIRDMAN,
