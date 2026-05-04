@@ -16,7 +16,7 @@ u16 gCurrentMusicId = 0xFF;
 f32 D_803505B4 = 0.0f;
 f32 D_803505B8 = 1.0f;
 f32 D_803505BC = 0.0f;
-u8 D_803505C0 = 0;
+u8 gMusicPlayingFlag = 0;
 f32 D_803505C4[VEHICLE_COUNT][2] = {
     {  0.9f, 1.0f },
     {  0.8f, 1.0f },
@@ -115,30 +115,30 @@ void func_8033F904(u8 emitterId, f32 pitch, f32 vol, f32 pan) {
 void sndSetMusicState(u8 state) {
     switch (state) {
     case 0:
-        if (D_803505C0 != 0) {
+        if (gMusicPlayingFlag != 0) {
             uvaSeqStop();
         }
         D_803505BC = 0.0f;
-        D_803505C0 = 1;
+        gMusicPlayingFlag = 1;
         uvaSeqNew(gCurrentMusicId);
         uvaSeqPlay();
         return;
     case 1:
-        if (D_803505C0 != 0) {
+        if (gMusicPlayingFlag != 0) {
             uvaSeqStop();
             D_803505BC = 0.0f;
             D_803505B4 = 0.0f;
-            D_803505C0 = 0;
+            gMusicPlayingFlag = 0;
             return;
         }
         return;
     case 3:
         D_803505BC = 0.5f;
-        if (D_803505C0 == 0) {
+        if (gMusicPlayingFlag == 0) {
             D_803505B4 = 0 /*0.0f*/;
             uvaSeqNew(gCurrentMusicId);
             uvaSeqPlay();
-            D_803505C0 = 1;
+            gMusicPlayingFlag = 1;
             return;
         }
         break;
@@ -149,7 +149,7 @@ void sndSetMusicState(u8 state) {
 }
 
 void func_8033FA88(f32 arg0) {
-    if (D_803505C0 != 0) {
+    if (gMusicPlayingFlag != 0) {
         func_80200180(0, 2, uvSqrtF(arg0), 0);
     }
 }
