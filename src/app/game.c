@@ -656,9 +656,9 @@ s32 gameUpdateStateResults(Unk80362690* arg0) {
         taskFrameUpdate(&temp_s0->unk2C, 0.0f);
         func_8034B624(temp_s0->unk70);
         resultDrawTally(1);
-        if (gCurrentMusicId != 0x1C) {
+        if (gCurrentMusicId != MUS_RESULTS) {
             uvEventPost(0x12, 0);
-            sndSetMusic(0x1C);
+            sndSetMusic(MUS_RESULTS);
             sndSetMusicState(0);
             func_8033FCD0(0xFF);
         }

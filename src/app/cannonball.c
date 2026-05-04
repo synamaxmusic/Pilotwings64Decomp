@@ -889,7 +889,7 @@ s32 cannonLandedFrame(CannonballData* cbData) {
     }
     D_8034EA00 = 0.0f;
     if (cbData->unkE == 2 && cbData->unkC < 3) {
-        sndSetMusic(0x1C);
+        sndSetMusic(MUS_RESULTS);
         sndSetMusicState(0);
         func_8033FCD0(temp_s0->veh);
         resultHandler(1);
@@ -982,7 +982,7 @@ s32 cannonEndAllTgts(CannonballData* cbData) {
 
     temp_s0 = &D_80362690->unkC[D_80362690->unk9C];
     uvEventPost(0xD, 0);
-    sndSetMusic(0x1C);
+    sndSetMusic(MUS_RESULTS);
     sndSetMusicState(0);
     func_8033FCD0(temp_s0->veh);
     temp_s0->test = 0;
