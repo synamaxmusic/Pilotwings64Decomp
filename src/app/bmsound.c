@@ -136,7 +136,7 @@ void bmSound_802D112C(BirdmanData* bmData) {
             sndPlaySfx(0x36);
             if (!(bmData->unk410 & 0x10)) {
                 sndSetMusic(0x1B);
-                func_8033F964(0);
+                sndSetMusicState(0);
                 func_8033FCD0(sp34->veh);
             }
             bmSound_802D12C4(bmData);
@@ -148,7 +148,7 @@ void bmSound_802D112C(BirdmanData* bmData) {
                 sndGetPilotScream(&sfxId, &pitch);
                 sndPlaySfxVolPitchPan(sfxId, 1.0f, pitch, 0.0f);
                 sndSetMusic(0x1B);
-                func_8033F964(0);
+                sndSetMusicState(0);
                 func_8033FCD0(sp34->veh);
                 bmSound_802D12C4(bmData);
             }
@@ -157,7 +157,7 @@ void bmSound_802D112C(BirdmanData* bmData) {
             if (!(bmData->unk410 & 0x20)) {
                 bmData->unk410 |= 0x20;
                 sndSetMusic(0x1A);
-                func_8033F964(0);
+                sndSetMusicState(0);
                 func_8033FCD0(sp34->veh);
                 bmSound_802D12C4(bmData);
             }

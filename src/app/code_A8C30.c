@@ -342,7 +342,7 @@ void func_80321760(void) {
     uvSprtProps(3, SPRT_PROP_POS(temp2, 50), SPRT_PROP_END);
     // clang-format on
     sndSetMusic(0x1DU);
-    func_8033F964(0);
+    sndSetMusicState(0);
 }
 
 s32 func_8032232C(void) {
@@ -363,7 +363,8 @@ s32 func_8032232C(void) {
     uvSprtProps(3, SPRT_PROP_ENABLED(FALSE), SPRT_PROP_END);
     taskDeinitLevel();
     func_8031FE18(D_8036DA20);
-    func_8033F964(1);
+    // stop music
+    sndSetMusicState(1);
 
     if (D_80362690->unkA8 < credits_8030CC48()) {
         creditsMainRender();

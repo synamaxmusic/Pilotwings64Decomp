@@ -115,7 +115,7 @@ s32 func_80342630(void) {
 STATIC_FUNC void func_803427FC(void) {
     Mtx4F sp58;
     Camera* camera;
-    s32 var_v0;
+    s32 musicId;
 
     D_80378CE0 = (Unk80378CE0*)_uvMemAllocAlign8(sizeof(Unk80378CE0));
     uvMemSet(D_80378CE0, 0, sizeof(Unk80378CE0));
@@ -187,7 +187,7 @@ STATIC_FUNC void func_803427FC(void) {
     uvaSeqSetTempo(110.0f);
     if (D_80350690 != 0) {
         D_80378CE0->unk23C = -0.5236f;
-        var_v0 = 0;
+        musicId = 0;
         D_80378CE0->unk22C = 0.0f;
         D_80378CE0->unk28 = 1;
     } else {
@@ -195,11 +195,11 @@ STATIC_FUNC void func_803427FC(void) {
         D_80378CE0->unk22C = 16.65f;
         D_80378CE0->unk28 = 7;
         func_80344258(1);
-        var_v0 = 1;
+        musicId = 1;
     }
-    if (var_v0 != gCurrentMusicId) {
-        sndSetMusic(var_v0);
-        func_8033F964(0);
+    if (musicId != gCurrentMusicId) {
+        sndSetMusic(musicId);
+        sndSetMusicState(0);
         func_8033FA88(0.75f);
         func_8033FCD0(0xFFU);
     }
@@ -329,9 +329,10 @@ STATIC_FUNC s32 func_80343550(void) {
                 D_80378CE0->unk28 = 7;
                 func_803433A4();
                 if (gCurrentMusicId != 1) {
-                    func_8033F964(1);
+                    // stop current music and play start menu music
+                    sndSetMusicState(1);
                     sndSetMusic(1);
-                    func_8033F964(0);
+                    sndSetMusicState(0);
                 }
                 D_80378CE0->unk265 = 0;
                 D_80378CE0->unk266 = 0;

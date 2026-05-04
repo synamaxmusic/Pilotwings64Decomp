@@ -108,8 +108,12 @@ void func_8033F904(u8 emitterId, f32 pitch, f32 vol, f32 pan) {
     }
 }
 
-void func_8033F964(u8 arg0) {
-    switch (arg0) {
+// 0 = stop current track, play gCurrentMusicId
+// 1 = stop music
+// 2 = demo/replay volume transition?
+// 3 = fade out / play gCurrentMusicId?
+void sndSetMusicState(u8 state) {
+    switch (state) {
     case 0:
         if (D_803505C0 != 0) {
             uvaSeqStop();

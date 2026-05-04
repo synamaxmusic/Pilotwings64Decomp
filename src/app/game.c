@@ -251,7 +251,7 @@ s32 gameUpdateStateVehicleClassSelect(Unk80362690* arg0) {
 
     if (gCurrentMusicId != 2) {
         sndSetMusic(2);
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
     gameState = func_8030D930();
@@ -270,7 +270,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
     textLoadBlock(0x42);
     if (gCurrentMusicId != 2) {
         sndSetMusic(2);
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
     gameState = fileMenuTopRender();
@@ -286,7 +286,7 @@ s32 gameUpdateStateTestOverview(Unk80362690* arg0) {
 
     if (gCurrentMusicId != 3) {
         sndSetMusic(3);
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
     gameState = func_8030C1C0();
@@ -337,7 +337,7 @@ s32 gameUpdateStateTestDetails(Unk80362690* arg0) {
     sp2C = &arg0->unkC[arg0->unk9C];
     if (gCurrentMusicId != 3) {
         sndSetMusic(3);
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
     uvEventPost(8, 0);
@@ -386,7 +386,7 @@ s32 gameUpdateStatePilotSelect(Unk80362690* arg0) {
     sp1C = &arg0->unkC[arg0->unk9C];
     if (gCurrentMusicId != 2) {
         sndSetMusic(2);
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
     hudText_8031D8E0(-1, 0.0f, 0.0f);
@@ -448,7 +448,8 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
     }
     if (arg0->unkA2 == 0) {
         envSoundInit();
-        func_8033F964(1);
+        // stop music
+        sndSetMusicState(1);
     }
     hud_8031A2CC();
     hudText_8031D8E0(-1, 0.0f, 0.0f);
@@ -538,7 +539,7 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
     fdrSetBlen(sp28);
     fdr_802E68B0(1);
     if (arg0->unkA2 == 0) {
-        func_8033F964(0);
+        sndSetMusicState(0);
         func_8033FCD0(temp_s0->veh);
     }
     uvEventPost(0xB, 0);
@@ -658,7 +659,7 @@ s32 gameUpdateStateResults(Unk80362690* arg0) {
         if (gCurrentMusicId != 0x1C) {
             uvEventPost(0x12, 0);
             sndSetMusic(0x1C);
-            func_8033F964(0);
+            sndSetMusicState(0);
             func_8033FCD0(0xFF);
         }
         uvGfxEnd();
@@ -718,7 +719,8 @@ void func_802ECE94(Unk80362690* arg0) {
         windObjDeinit();
         level_8030BA60();
         if (arg0->unkA2 == 0) {
-            func_8033F964(1);
+            // stop music
+            sndSetMusicState(1);
         }
         hud_8031DAA8(0, 0.0f);
         hudGetState()->renderFlags = 0;
@@ -961,7 +963,7 @@ s32 gameUpdateStateTestUpdate(Unk80362690* arg0) {
             }
             uvEventPost(0x12, 0);
             sp5C = D_8034F850;
-            func_8033F964(2);
+            sndSetMusicState(2);
 
             switch (func_8032CF28(arg0)) {
             case 0:
@@ -992,7 +994,7 @@ s32 gameUpdateStateTestUpdate(Unk80362690* arg0) {
                 }
                 break;
             }
-            func_8033F964(3);
+            sndSetMusicState(3);
             D_8034F850 = sp5C;
             uvEventPost(0x13, 0);
             if (sp6C->veh == VEHICLE_GYROCOPTER) {
@@ -1261,9 +1263,9 @@ void func_802EE14C(u16 veh) {
         uvLevelAppend(0x1B);
         break;
     }
-    func_8033F964(1);
+    sndSetMusicState(1);
     func_8032D51C(1);
-    func_8033F964(0);
+    sndSetMusicState(0);
     func_8033FCD0(temp_s0->veh);
     hud_8031DAA8(2, 1.0f);
     fdrSetBlen(sp3C);

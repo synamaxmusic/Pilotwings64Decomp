@@ -185,7 +185,8 @@ s32 optionsHandlerMain(void) {
             return -1;
         case 3:
             func_8033FB14();
-            func_8033F964(1);
+            // stop music
+            sndSetMusicState(1);
             func_8032D51C(0);
             creditsMainRender();
             options_80316B80();
@@ -273,7 +274,8 @@ s32 optionsHandlerSound(void) {
             return -1;
         } else {
             D_8034F8F4 = 0;
-            func_8033F964(1);
+            // stop music
+            sndSetMusicState(1);
         }
     }
     optInc = 0;
@@ -310,7 +312,7 @@ s32 optionsHandlerSound(void) {
         sSoundTrack = optionsItemWrap(sSoundTrack, 0, 30);
         if (sp24 == menuItem) {
             sndSetMusic(sSoundTrack);
-            func_8033F964(0);
+            sndSetMusicState(0);
             func_8033FCD0(0xFF);
         }
         if (optInc != 0) {

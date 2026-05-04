@@ -268,13 +268,14 @@ void credits_8030CDA0(s32 timeOfDay) {
     uvFontScale(1.0, 1.0);
     demoAttInit(0x54);
     sndSetMusic(0x1E);
-    func_8033F964(0);
+    sndSetMusicState(0);
     func_8033FCD0(sp2C->veh);
 }
 
 void credits_8030D1D4(void) {
     uvEventPost(0xD, 0);
-    func_8033F964(1U);
+    // stop music
+    sndSetMusicState(1);
     fireFxDeinit();
 }
 

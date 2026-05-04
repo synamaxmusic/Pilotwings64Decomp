@@ -172,7 +172,7 @@ void func_802EEB00(HangGliderData* hgData, u8 arg1) {
         if (arg1 != 0) {
             hgData->unk251 = 2;
             sndSetMusic(5);
-            func_8033F964(0);
+            sndSetMusicState(0);
             func_8033FCD0(sp30->veh);
             uvEventPost(0x12, 0);
         } else {
@@ -182,7 +182,7 @@ void func_802EEB00(HangGliderData* hgData, u8 arg1) {
             } else {
                 sndSetMusic(6);
             }
-            func_8033F964(0);
+            sndSetMusicState(0);
             func_8033FCD0(sp30->veh);
             uvEventPost(0x12, 0);
         }
@@ -256,7 +256,7 @@ void func_802EEF0C(HangGliderData* hgData) {
             sndPlaySfx(SFX_WATER_SPLASH);
             if (!(hgData->unk318 & 0x10)) {
                 sndSetMusic(7U);
-                func_8033F964(0);
+                sndSetMusicState(0);
                 func_8033FCD0(sp30->veh);
             }
             uvEventPost(0x12, 0);

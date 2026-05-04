@@ -134,7 +134,7 @@ s32 func_802FB308(JumbleHopperData* jhData) {
                 D_80368B80[i].unk10 = 0.0;
                 sndPlaySfx(SFX_GOAL_GONG);
                 sndSetMusic(0x18);
-                func_8033F964(0);
+                sndSetMusicState(0);
                 uvDobjModel(D_80368B80[i].objId, MODEL_WORLD);
                 func_802FB0DC(&D_80368B80[i]);
                 if (D_80368B80[i].unk0->unk10 == 1) {

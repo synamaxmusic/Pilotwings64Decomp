@@ -14,7 +14,7 @@ void sndPlaySfx(u8);
 u8 sndMakeDev(s32);
 u8 func_8033F8CC(u8);
 void func_8033F904(u8, f32, f32, f32);
-void func_8033F964(u8);
+void sndSetMusicState(u8);
 void func_8033FA88(f32);
 void func_8033FAD4(f32);
 void func_8033FB14(void);
