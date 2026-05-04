@@ -249,8 +249,8 @@ s32 gameUpdateStateDemoTestSetup(Unk80362690* arg0) {
 s32 gameUpdateStateVehicleClassSelect(Unk80362690* arg0) {
     s32 gameState;
 
-    if (gCurrentMusicId != 2) {
-        sndSetMusic(2);
+    if (gCurrentMusicId != MUS_SELECT_MENU) {
+        sndSetMusic(MUS_SELECT_MENU);
         sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
@@ -268,8 +268,8 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
     uvLevelAppend(0x48);
     D_8034F160 = 0x48;
     textLoadBlock(0x42);
-    if (gCurrentMusicId != 2) {
-        sndSetMusic(2);
+    if (gCurrentMusicId != MUS_SELECT_MENU) {
+        sndSetMusic(MUS_SELECT_MENU);
         sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
@@ -384,8 +384,8 @@ s32 gameUpdateStatePilotSelect(Unk80362690* arg0) {
     Unk80367868* ptr = &D_80367868;
 
     sp1C = &arg0->unkC[arg0->unk9C];
-    if (gCurrentMusicId != 2) {
-        sndSetMusic(2);
+    if (gCurrentMusicId != MUS_SELECT_MENU) {
+        sndSetMusic(MUS_SELECT_MENU);
         sndSetMusicState(0);
         func_8033FCD0(0xFF);
     }
