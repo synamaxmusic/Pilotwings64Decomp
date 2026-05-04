@@ -197,7 +197,7 @@ STATIC_FUNC void func_803427FC(void) {
         func_80344258(1);
         var_v0 = 1;
     }
-    if (var_v0 != D_803505B0) {
+    if (var_v0 != gCurrentMusicId) {
         func_8033F748(var_v0);
         func_8033F964(0);
         func_8033FA88(0.75f);
@@ -328,7 +328,7 @@ STATIC_FUNC s32 func_80343550(void) {
                 D_80378CE0->unk22C = 16.65f;
                 D_80378CE0->unk28 = 7;
                 func_803433A4();
-                if (D_803505B0 != 1) {
+                if (gCurrentMusicId != 1) {
                     func_8033F964(1);
                     func_8033F748(1);
                     func_8033F964(0);

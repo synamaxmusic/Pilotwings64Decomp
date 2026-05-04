@@ -249,7 +249,7 @@ s32 gameUpdateStateDemoTestSetup(Unk80362690* arg0) {
 s32 gameUpdateStateVehicleClassSelect(Unk80362690* arg0) {
     s32 gameState;
 
-    if (D_803505B0 != 2) {
+    if (gCurrentMusicId != 2) {
         func_8033F748(2);
         func_8033F964(0);
         func_8033FCD0(0xFF);
@@ -268,7 +268,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
     uvLevelAppend(0x48);
     D_8034F160 = 0x48;
     textLoadBlock(0x42);
-    if (D_803505B0 != 2) {
+    if (gCurrentMusicId != 2) {
         func_8033F748(2);
         func_8033F964(0);
         func_8033FCD0(0xFF);
@@ -284,7 +284,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
 s32 gameUpdateStateTestOverview(Unk80362690* arg0) {
     s32 gameState;
 
-    if (D_803505B0 != 3) {
+    if (gCurrentMusicId != 3) {
         func_8033F748(3);
         func_8033F964(0);
         func_8033FCD0(0xFF);
@@ -335,7 +335,7 @@ s32 gameUpdateStateTestDetails(Unk80362690* arg0) {
     Unk80367710* ptr = &D_80367710;
 
     sp2C = &arg0->unkC[arg0->unk9C];
-    if (D_803505B0 != 3) {
+    if (gCurrentMusicId != 3) {
         func_8033F748(3);
         func_8033F964(0);
         func_8033FCD0(0xFF);
@@ -384,7 +384,7 @@ s32 gameUpdateStatePilotSelect(Unk80362690* arg0) {
     Unk80367868* ptr = &D_80367868;
 
     sp1C = &arg0->unkC[arg0->unk9C];
-    if (D_803505B0 != 2) {
+    if (gCurrentMusicId != 2) {
         func_8033F748(2);
         func_8033F964(0);
         func_8033FCD0(0xFF);
@@ -655,7 +655,7 @@ s32 gameUpdateStateResults(Unk80362690* arg0) {
         taskFrameUpdate(&temp_s0->unk2C, 0.0f);
         func_8034B624(temp_s0->unk70);
         resultDrawTally(1);
-        if (D_803505B0 != 0x1C) {
+        if (gCurrentMusicId != 0x1C) {
             uvEventPost(0x12, 0);
             func_8033F748(0x1C);
             func_8033F964(0);

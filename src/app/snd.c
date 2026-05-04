@@ -12,7 +12,7 @@ Mtx4F D_80373EA0;
 f32 D_80373EE0;
 EventCallbackInfo D_80373EE8;
 
-u16 D_803505B0 = 0xFF;
+u16 gCurrentMusicId = 0xFF;
 f32 D_803505B4 = 0.0f;
 f32 D_803505B8 = 1.0f;
 f32 D_803505BC = 0.0f;
@@ -51,7 +51,7 @@ void func_8033F6F8(Mtx4F* arg0, Mtx4F* arg1) {
 }
 
 void func_8033F748(u16 arg0) {
-    D_803505B0 = arg0;
+    gCurrentMusicId = arg0;
 }
 
 void sndPlaySfxVolPitchPan(u8 sfxId, f32 vol, f32 pitch, f32 pan) {
@@ -116,7 +116,7 @@ void func_8033F964(u8 arg0) {
         }
         D_803505BC = 0.0f;
         D_803505C0 = 1;
-        uvaSeqNew(D_803505B0);
+        uvaSeqNew(gCurrentMusicId);
         uvaSeqPlay();
         return;
     case 1:
@@ -132,7 +132,7 @@ void func_8033F964(u8 arg0) {
         D_803505BC = 0.5f;
         if (D_803505C0 == 0) {
             D_803505B4 = 0 /*0.0f*/;
-            uvaSeqNew(D_803505B0);
+            uvaSeqNew(gCurrentMusicId);
             uvaSeqPlay();
             D_803505C0 = 1;
             return;

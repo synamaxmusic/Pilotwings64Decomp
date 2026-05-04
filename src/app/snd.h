@@ -4,7 +4,7 @@
 #include <PR/ultratypes.h>
 #include <uv_matrix.h>
 
-extern u16 D_803505B0;
+extern u16 gCurrentMusicId;
 
 void sndInit(void);
 void func_8033F6F8(Mtx4F*, Mtx4F*);
