@@ -199,7 +199,7 @@ STATIC_FUNC void func_803427FC(void) {
     }
     if (musicId != gCurrentMusicId) {
         sndSetMusic(musicId);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FA88(0.75f);
         func_8033FCD0(0xFFU);
     }
@@ -332,7 +332,7 @@ STATIC_FUNC s32 func_80343550(void) {
                     // stop current demo music and play title music loop
                     sndSetMusicState(1);
                     sndSetMusic(MUS_THEME_LOOP);
-                    sndSetMusicState(0);
+                    sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 }
                 D_80378CE0->unk265 = 0;
                 D_80378CE0->unk266 = 0;

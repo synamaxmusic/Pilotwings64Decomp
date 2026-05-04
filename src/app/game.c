@@ -251,7 +251,7 @@ s32 gameUpdateStateVehicleClassSelect(Unk80362690* arg0) {
 
     if (gCurrentMusicId != MUS_SELECT_MENU) {
         sndSetMusic(MUS_SELECT_MENU);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
     }
     gameState = func_8030D930();
@@ -270,7 +270,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
     textLoadBlock(0x42);
     if (gCurrentMusicId != MUS_SELECT_MENU) {
         sndSetMusic(MUS_SELECT_MENU);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
     }
     gameState = fileMenuTopRender();
@@ -286,7 +286,7 @@ s32 gameUpdateStateTestOverview(Unk80362690* arg0) {
 
     if (gCurrentMusicId != MUS_TEST_MENU) {
         sndSetMusic(MUS_TEST_MENU);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
     }
     gameState = func_8030C1C0();
@@ -337,7 +337,7 @@ s32 gameUpdateStateTestDetails(Unk80362690* arg0) {
     sp2C = &arg0->unkC[arg0->unk9C];
     if (gCurrentMusicId != MUS_TEST_MENU) {
         sndSetMusic(MUS_TEST_MENU);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
     }
     uvEventPost(8, 0);
@@ -386,7 +386,7 @@ s32 gameUpdateStatePilotSelect(Unk80362690* arg0) {
     sp1C = &arg0->unkC[arg0->unk9C];
     if (gCurrentMusicId != MUS_SELECT_MENU) {
         sndSetMusic(MUS_SELECT_MENU);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
     }
     hudText_8031D8E0(-1, 0.0f, 0.0f);
@@ -539,7 +539,7 @@ s32 gameUpdateStateTestSetup(Unk80362690* arg0) {
     fdrSetBlen(sp28);
     fdr_802E68B0(1);
     if (arg0->unkA2 == 0) {
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(temp_s0->veh);
     }
     uvEventPost(0xB, 0);
@@ -659,7 +659,7 @@ s32 gameUpdateStateResults(Unk80362690* arg0) {
         if (gCurrentMusicId != MUS_RESULTS) {
             uvEventPost(0x12, 0);
             sndSetMusic(MUS_RESULTS);
-            sndSetMusicState(0);
+            sndSetMusicState(MUS_STATE_PLAY_SEQ);
             func_8033FCD0(0xFF);
         }
         uvGfxEnd();
@@ -1267,7 +1267,7 @@ void func_802EE14C(u16 veh) {
     }
     sndSetMusicState(1);
     func_8032D51C(1);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(temp_s0->veh);
     hud_8031DAA8(2, 1.0f);
     fdrSetBlen(sp3C);

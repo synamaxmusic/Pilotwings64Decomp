@@ -754,7 +754,7 @@ s32 cannonLoad802D77D8(Unk80362690* arg0, CannonballData* cbData) {
     fdrSetBlen(1.0f);
     fdr_802E68B0(1);
     sndSetMusic(0x10);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(temp_s1->veh);
     uvEventPost(0xB, 0);
     D_80359A84 = 0;
@@ -872,7 +872,7 @@ s32 cannonLandedFrame(CannonballData* cbData) {
             } else {
                 sndPlaySfx(0x36);
                 sndSetMusic(0x11);
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(temp_s0->veh);
             }
         }
@@ -890,7 +890,7 @@ s32 cannonLandedFrame(CannonballData* cbData) {
     D_8034EA00 = 0.0f;
     if (cbData->unkE == 2 && cbData->unkC < 3) {
         sndSetMusic(MUS_RESULTS);
-        sndSetMusicState(0);
+        sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(temp_s0->veh);
         resultHandler(1);
     }
@@ -930,7 +930,7 @@ s32 cannonEndShot(CannonballData* cbData) {
     }
 
     sndSetMusic(0x10);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(temp_s1->veh);
     if (cbData->unkC != sp2E) {
         uvEventPost(0x19, 0);
@@ -983,7 +983,7 @@ s32 cannonEndAllTgts(CannonballData* cbData) {
     temp_s0 = &D_80362690->unkC[D_80362690->unk9C];
     uvEventPost(0xD, 0);
     sndSetMusic(MUS_RESULTS);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(temp_s0->veh);
     temp_s0->test = 0;
     temp_s0->unk8B = 1;

@@ -180,4 +180,11 @@ enum Music {
     /* 0x1E */ MUS_CREDITS  // "Bravissimo!"
 };
 
+enum MusicState {
+    MUS_STATE_PLAY_SEQ = 0,
+    MUS_STATE_STOP_SEQ = 1,
+    MUS_STATE_PAUSE_MENU = 2,
+    MUS_STATE_PAUSE_EXIT = 3
+};
+
 #endif // APP_SND_H

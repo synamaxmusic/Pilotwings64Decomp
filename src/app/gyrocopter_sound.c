@@ -224,7 +224,7 @@ void func_8030ABF8(GyrocopterData* gcData) {
             sndPlaySfx(0x3F);
             if (!(gcData->unk678 & 0x10)) {
                 sndSetMusic(0xF);
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
             }
         }
@@ -235,7 +235,7 @@ void func_8030ABF8(GyrocopterData* gcData) {
                 sndGetPilotScream(&sfxId, &pitch);
                 sndPlaySfxVolPitchPan(sfxId, 1.0f, pitch, 0.0f);
                 sndSetMusic(0xF);
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
                 func_8030ADCC(gcData);
             }
@@ -248,7 +248,7 @@ void func_8030ABF8(GyrocopterData* gcData) {
                 } else {
                     sndSetMusic(0xE);
                 }
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
                 func_8030ADCC(gcData);
             }

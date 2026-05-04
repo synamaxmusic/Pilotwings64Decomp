@@ -185,7 +185,7 @@ STATIC_FUNC void rbSoundEvent12_22(RocketBeltData* rbData) {
             sndPlaySfx(0x36);
             if ((rbData->unk384 & 0x10) == 0) {
                 sndSetMusic(0xB);
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
             }
             rbSoundEvent12_18(rbData);
@@ -197,7 +197,7 @@ STATIC_FUNC void rbSoundEvent12_22(RocketBeltData* rbData) {
                 sndGetPilotScream(&sfxId, &pitch);
                 sndPlaySfxVolPitchPan(sfxId, 1.0f, pitch, 0.0f);
                 sndSetMusic(0xB);
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
                 rbSoundEvent12_18(rbData);
             }
@@ -209,7 +209,7 @@ STATIC_FUNC void rbSoundEvent12_22(RocketBeltData* rbData) {
                 } else {
                     sndSetMusic(0xA);
                 }
-                sndSetMusicState(0);
+                sndSetMusicState(MUS_STATE_PLAY_SEQ);
                 func_8033FCD0(sp34->veh);
                 rbSoundEvent12_18(rbData);
             }

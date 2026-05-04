@@ -268,7 +268,7 @@ void credits_8030CDA0(s32 timeOfDay) {
     uvFontScale(1.0, 1.0);
     demoAttInit(0x54);
     sndSetMusic(MUS_CREDITS);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
     func_8033FCD0(sp2C->veh);
 }
 

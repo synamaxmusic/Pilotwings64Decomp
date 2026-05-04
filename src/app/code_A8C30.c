@@ -342,7 +342,7 @@ void func_80321760(void) {
     uvSprtProps(3, SPRT_PROP_POS(temp2, 50), SPRT_PROP_END);
     // clang-format on
     sndSetMusic(0x1DU);
-    sndSetMusicState(0);
+    sndSetMusicState(MUS_STATE_PLAY_SEQ);
 }
 
 s32 func_8032232C(void) {

@@ -157,7 +157,7 @@ void func_802DA23C(CannonballData* cbData) {
             }
             cbData->unk2AC |= 2;
             sndSetMusic(0x12);
-            sndSetMusicState(0);
+            sndSetMusicState(MUS_STATE_PLAY_SEQ);
             func_8033FCD0(sp24->veh);
             func_802DA1A8(cbData);
         }
