@@ -249,7 +249,7 @@ s32 gameUpdateStateDemoTestSetup(Unk80362690* arg0) {
 s32 gameUpdateStateVehicleClassSelect(Unk80362690* arg0) {
     s32 gameState;
 
-    if (gCurrentMusicId != MUS_SELECT_MENU) {
+    if (gCurrentMusicId != BGM_SELECT_MENU) {
         sndSetMusic(BGM_SELECT_MENU);
         sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
@@ -268,7 +268,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
     uvLevelAppend(0x48);
     D_8034F160 = 0x48;
     textLoadBlock(0x42);
-    if (gCurrentMusicId != MUS_SELECT_MENU) {
+    if (gCurrentMusicId != BGM_SELECT_MENU) {
         sndSetMusic(BGM_SELECT_MENU);
         sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
@@ -284,7 +284,7 @@ s32 gameUpdateStateFileMenu(Unk80362690* arg0) {
 s32 gameUpdateStateTestOverview(Unk80362690* arg0) {
     s32 gameState;
 
-    if (gCurrentMusicId != MUS_TEST_MENU) {
+    if (gCurrentMusicId != BGM_TEST_MENU) {
         sndSetMusic(BGM_TEST_MENU);
         sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
@@ -335,7 +335,7 @@ s32 gameUpdateStateTestDetails(Unk80362690* arg0) {
     Unk80367710* ptr = &D_80367710;
 
     sp2C = &arg0->unkC[arg0->unk9C];
-    if (gCurrentMusicId != MUS_TEST_MENU) {
+    if (gCurrentMusicId != BGM_TEST_MENU) {
         sndSetMusic(BGM_TEST_MENU);
         sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
@@ -384,7 +384,7 @@ s32 gameUpdateStatePilotSelect(Unk80362690* arg0) {
     Unk80367868* ptr = &D_80367868;
 
     sp1C = &arg0->unkC[arg0->unk9C];
-    if (gCurrentMusicId != MUS_SELECT_MENU) {
+    if (gCurrentMusicId != BGM_SELECT_MENU) {
         sndSetMusic(BGM_SELECT_MENU);
         sndSetMusicState(MUS_STATE_PLAY_SEQ);
         func_8033FCD0(0xFF);
@@ -655,7 +655,7 @@ s32 gameUpdateStateResults(Unk80362690* arg0) {
         taskFrameUpdate(&temp_s0->unk2C, 0.0f);
         func_8034B624(temp_s0->unk70);
         resultDrawTally(1);
-        if (gCurrentMusicId != MUS_RESULTS) {
+        if (gCurrentMusicId != BGM_RESULTS) {
             uvEventPost(0x12, 0);
             sndSetMusic(BGM_RESULTS);
             sndSetMusicState(MUS_STATE_PLAY_SEQ);
