@@ -108,13 +108,9 @@ void func_8033F904(u8 emitterId, f32 pitch, f32 vol, f32 pan) {
     }
 }
 
-// 0 = stop current track, play gCurrentMusicId
-// 1 = stop music
-// 2 = pause menu enter
-// 3 = pause menu exit
 void sndSetMusicState(u8 state) {
     switch (state) {
-    case 0:
+    case MUS_STATE_PLAY_SEQ:
         if (gMusicPlayingFlag != 0) {
             uvaSeqStop();
         }
@@ -123,7 +119,7 @@ void sndSetMusicState(u8 state) {
         uvaSeqNew(gCurrentMusicId);
         uvaSeqPlay();
         return;
-    case 1:
+    case MUS_STATE_STOP_SEQ:
         if (gMusicPlayingFlag != 0) {
             uvaSeqStop();
             D_803505BC = 0.0f;
@@ -132,7 +128,7 @@ void sndSetMusicState(u8 state) {
             return;
         }
         return;
-    case 3:
+    case MUS_STATE_PAUSE_EXIT:
         D_803505BC = 0.5f;
         if (gMusicPlayingFlag == 0) {
             D_803505B4 = 0 /*0.0f*/;
@@ -142,7 +138,7 @@ void sndSetMusicState(u8 state) {
             return;
         }
         break;
-    case 2:
+    case MUS_STATE_PAUSE_MENU:
         D_803505BC = -0.5f;
         break;
     }
